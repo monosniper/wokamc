@@ -11,7 +11,7 @@ const Product = ({product, className, hide}) => {
     return hide ? null : (
         <div className={"product-wrapper " + className}>
             <div className={"product"}>
-                <div className={"product__container"} onClick={() => store.showModal('productInfo')}>
+                <div className={"product__container"} onClick={() => store.showModal('productInfo', product.id)}>
                     <div className="product__title">{product.title}</div>
                     <div className="product__img -ibg">
                         <img src={API_URL + product.image} alt={product.title}/>
@@ -34,7 +34,7 @@ const Product = ({product, className, hide}) => {
                     {/*        В корзину*/}
                     {/*    </button>*/}
                     {/*)}*/}
-                    <button onClick={() => store.showModal('productChoice')}
+                    <button onClick={() => store.showModal('productChoice', product.id)}
                             className="btn-buy btn-buy_common _icon-cart" type="button">
                         В корзину
                     </button>

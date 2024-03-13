@@ -8,9 +8,9 @@ const ProductInfo = ({product, tags}) => {
     const {store} = useContext(Context);
 
     return (
-        <Modal ariaHideApp={false} closeTimeoutMS={500} className={'modal popup_small'} isOpen={store.modals.productInfo}>
+        <Modal ariaHideApp={false} closeTimeoutMS={500} className={'modal popup_small'} isOpen={store.modals.productInfo[product.id]}>
             <div className="popup__content">
-                <button onClick={() => store.hideModal('productInfo')} type="button" className="popup__close _icon-close"></button>
+                <button onClick={() => store.hideModal('productInfo', product.id)} type="button" className="popup__close _icon-close"></button>
                 <div className="popup__text">
                     <div className="info-buy">
                         <div className="info-buy__header">

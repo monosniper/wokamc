@@ -3,25 +3,7 @@ import {$api} from "../api";
 
 class Store {
     tags = []
-    products = [{
-        "id": 1,
-        "title": "SERF +7£",
-        "price": 90,
-        "price_1": 29,
-        "price_3": 60,
-        "bonus": 21,
-        "bonus_1": 7,
-        "bonus_3": 14,
-        "discount": null,
-        "description": "Это игровая привилегия на режиме \"ANARCHY-M\" она даёт вам уникальные \nвозможности как основной привилегии так и предыдущих.  Посмотреть полный \nсписок возможностей и уникальных плюшек можно на сервере, \nпрописав команду \"/donate\".\n\n» Данная привилегия покупается навсегда.\n» Никакие условия возврата средств за неё не предусматриваются.",
-        "image": "/products/1.png",
-        "TagId": 1,
-        "rcon": "lp user {name} parent addtemp serf 30d",
-        "rcon_1": "lp user {name} parent addtemp serf 90d",
-        "rcon_3": null,
-        "rcon_forever": "lp user {name} parent add serf",
-        "createdAt": "2024-03-13T15:24:11.000Z"
-    }]
+    products = []
     last_buys = []
     activeTag = null
     basket = []
@@ -30,8 +12,8 @@ class Store {
     promo = false
     modals = {
         basket: false,
-        productInfo: false,
-        productChoice: false,
+        productInfo: [],
+        productChoice: [],
     }
 
     constructor() {
@@ -62,15 +44,23 @@ class Store {
         return total
     }
 
-    showModal(name) {
+    showModal(name, id= null) {
         this.isModalOpen = true
-        this.modals[name] = true
+        if(id !== null) {
+            this.modals[name][id] = true
+        } else {
+            this.modals[name] = true
+        }
         document.body.style.overflow = 'hidden';
     }
 
-    hideModal(name) {
+    hideModal(name, id= null) {
         this.isModalOpen = false
-        this.modals[name] = false
+        if(id !== null) {
+            this.modals[name][id] = false
+        } else {
+            this.modals[name] = false
+        }
         document.body.style.overflow = 'unset';
     }
 
@@ -132,6 +122,14 @@ class Store {
     fetchProducts() {
         $api.get('products').then(rs => {
             this.setProducts(rs.data)
+            const modals = rs.data
+
+            rs.data.forEach(({id}) => {
+                modals[id] = false
+            })
+
+            this.modals.productInfo = modals
+            this.modals.productChoice = modals
         })
     }
 
