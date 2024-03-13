@@ -33,7 +33,7 @@ const ProductInfo = ({product, tags}) => {
                                 </div>
                                 <div className="info-buy__price">
                                     <span>{product.price_1}.00 ₽</span>
-                                    <button className="btn-buy btn-buy_common _icon-ar-down" type="button" onClick={() => {store.showModal('productChoice');store.hideModal('productInfo')}}>
+                                    <button className="btn-buy btn-buy_common _icon-ar-down" type="button" onClick={() => {store.showModal('productChoice', product.id);store.hideModal('productInfo', product.id)}}>
                                         В корзину
                                     </button>
                                 </div>
