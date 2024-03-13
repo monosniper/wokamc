@@ -12,7 +12,7 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
     }
 
     return (
-        <section className="hero" style={{background: 'url("../img/'+video+'.webp") no-repeat center/cover'}}>
+        <section className="hero" style={{background: 'url("../img/'+video+'") no-repeat center/cover'}}>
             {/*<video className={"video"} playsInline autoPlay muted loop>*/}
             {/*    <source src={"img/"+video} type="video/webm" />*/}
             {/*</video>*/}
