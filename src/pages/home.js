@@ -22,7 +22,7 @@ const Home = () => {
 	    <Products />
 	    <Servers />
 	    {/*<Socials />*/}
-	    {/*<LastBuys />*/}
+	    <LastBuys />
 	</Layout>
     );
 };

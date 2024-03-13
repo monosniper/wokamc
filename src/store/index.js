@@ -37,9 +37,9 @@ class Store {
     constructor() {
         makeAutoObservable(this)
 
-        // this.fetchTags()
-        // this.fetchProducts()
-        // this.fetchLastBuys()
+        this.fetchTags()
+        this.fetchProducts()
+        this.fetchLastBuys()
     }
 
     getTotalBasket() {
