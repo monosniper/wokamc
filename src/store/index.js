@@ -122,7 +122,7 @@ class Store {
     fetchProducts() {
         $api.get('products').then(rs => {
             this.setProducts(rs.data)
-            const modals = rs.data
+            const modals = []
 
             rs.data.forEach(({id}) => {
                 modals[id] = false
