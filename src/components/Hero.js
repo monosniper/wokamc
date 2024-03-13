@@ -13,7 +13,7 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
 
     return (
         <section className="hero">
-            <video className={"video"} playsInline autoPlay muted loop poster="cake.jpg">
+            <video className={"video"} playsInline autoPlay muted loop>
                 <source src={"img/"+video} type="video/webm" />
             </video>
             <div className="hero__overlay"></div>
