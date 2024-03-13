@@ -17,8 +17,8 @@ const Home = () => {
 			title_2={"уникальный сервер"}
 			video={"hero.webp"}
 		/>
-		<div className="light light_1"></div>
-		<div className="light light_2"></div>
+		{/*<div className="light light_1"></div>*/}
+		{/*<div className="light light_2"></div>*/}
 	    <Products />
 	    <Servers />
 	    {/*<Socials />*/}

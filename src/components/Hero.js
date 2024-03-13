@@ -93,7 +93,7 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
                     {/*        </div>*/}
                     {/*    </div>*/}
                     {/*</div>*/}
-                    <img src="img/sheep.webp" alt="Image"/>
+                    {/*<img src="img/sereshki.png" alt="Image"/>*/}
                 </div>
             </div>
         </section>
