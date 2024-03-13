@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
 const Layout = ({children}) => {
+    const {store} = useContext(Context);
+
     return (
         <div className="App">
+            {store.isModalOpen ? <div className="overlay"></div> : null}
             <div className="wrapper">
                 <Header/>
                 <main className="page">
@@ -23,4 +28,4 @@ const Layout = ({children}) => {
     );
 };
 
-export default Layout;
+export default observer(Layout);

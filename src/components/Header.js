@@ -1,15 +1,16 @@
-import React, {useContext, useState} from 'react';
-import Basket from "./Basket";
+import React, {useContext} from 'react';
+import Basket from "./modals/Basket";
 import {Link} from "react-router-dom";
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 
 const Header = () => {
     const {store} = useContext(Context);
-    const [basketModal, setBasketModal] = useState(false)
 
-    const handleOpenModal = () => setBasketModal(true);
-    const handleCloseModal = () => setBasketModal(false);
+    const toggleMobileMenu = () => {
+        document.querySelector('html').classList.toggle('lock')
+        document.querySelector('html').classList.toggle('menu-open')
+    }
 
     return (
         <header className="header">
@@ -31,17 +32,17 @@ const Header = () => {
                         </ul>
                     </nav>
                 </div>
-                <div className="header__action" onClick={handleOpenModal}>
-                    <div className="header__cart cart">
+                <div className="header__action">
+                    <div className="header__cart cart" onClick={() => store.showModal('basket')}>
                         <button className="cart__btn" data-popup="#order" type="button">
                             <span className="_icon-cart">{store.getTotalBasket()}.00 ₽</span>
                             <i className="_icon-arrow"></i>
                         </button>
                     </div>
-                    <button type="button" className="menu__icon icon-menu"><span></span></button>
+                    <button onClick={toggleMobileMenu} type="button" className="menu__icon icon-menu"><span></span></button>
                 </div>
             </div>
-            <Basket modal={basketModal} handleCloseModal={handleCloseModal}/>
+            <Basket />
         </header>
     );
 };

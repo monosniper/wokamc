@@ -36,6 +36,17 @@ html {
     border-radius: 5px;
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 15;
+    background: #000;
+    opacity: .2;
+}
+
 .checkbox__label::after,
 [class*=_icon-]:before {
     font-family: "icons";
@@ -171,7 +182,7 @@ body {
 }
 
 .lock body {
-    overflow: hidden;
+    overflow: hidden !important;
     -ms-touch-action: none;
     touch-action: none;
     -ms-scroll-chaining: none;
@@ -1218,9 +1229,43 @@ body::after {
 
 .footer {
     padding: 4rem 0 1rem;
-    background-color: #0d121c;
+    //background-color: #0d121c;
+    background-color: #171717;
     color: #fff;
     z-index: 1;
+}
+
+.discord .header {
+    position: relative !important;
+    height: 50px !important;
+    min-height: auto !important;
+}
+.promo-text {
+    font-size: 16px;
+    color: #26d977;
+    font-weight: bold;
+}
+.error-noty {
+    position: fixed;
+    display: flex;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    transition: .5s ease-in-out;
+    opacity: 0;
+    transform: translateY(-40px);
+
+    &.open {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .text {
+        background: #ef8888;
+        color: white;
+        text-align: center;
+        border-radius: 15px;
+    }
 }
 
 .footer__top {
@@ -3321,7 +3366,7 @@ body::after {
     }
 
     .btn-buy:hover {
-        background-color: #46a16e;
+        background-color: #1d2436;
     }
 
     .btn-del:hover {
@@ -3351,7 +3396,8 @@ body::after {
     }
 
     .hero__btn:hover {
-        background-color: #387754;
+        //background-color: #387754;
+        background-color: #1d2436;
     }
 }
 
@@ -3419,8 +3465,8 @@ body::after {
     height: 40px;
     font-size: inherit;
     cursor: pointer;
-    background: #12161d;
-    color: white;
+    //background: #12161d;
+    //color: white;
 }
 
 .normalizer {
@@ -3450,7 +3496,8 @@ body::after {
         cursor: pointer;
 
         &.selected {
-            background: #29c972 !important;
+            //background: #29c972 !important;
+            background: #121c33 !important;
             font-weight: bold;
         }
 
@@ -3464,8 +3511,9 @@ body::after {
     opacity: 0;
     transform: translateY(-100px);
     transition: all 500ms ease-in-out;
-    background-color: rgb(0 0 0 / 10%) !important;
-    backdrop-filter: blur(5px);
+    background: transparent !important;
+    //background-color: rgb(0 0 0 / 10%) !important;
+    //backdrop-filter: blur(5px);
 }
 
 .ReactModal__Overlay--after-open {
@@ -3500,6 +3548,15 @@ body::after {
 }
 
 .choose {
+    .btn-buy {
+        padding: 0.675rem 1.4375rem !important;
+        min-width: auto !important;
+    }
+
+    .btn-del {
+        padding: 0.675rem !important;
+    }
+
     &__title {
         font-size: 24px;
         font-weight: bold;
@@ -3507,7 +3564,7 @@ body::after {
         margin-bottom: 1.5rem;
 
         span {
-            color: #3dd17e;
+            color: $contrast;
             margin-right: 0.9rem;
             position: relative;
 
@@ -3533,12 +3590,13 @@ body::after {
     }
 
     &-item {
-        border: 2px solid #3dd17e;
+        border: 2px solid $contrast;
         border-radius: 20px;
-        padding: 20px;
+        padding: 20px 40px;
         text-align: center;
         display: flex;
-        background: #3dd17e17;
+        //background: #3dd17e17;
+        background: #e6e9f1;
         flex-direction: column;
         gap: 0.5rem;
         transition: .1s ease-in-out;
@@ -3560,12 +3618,13 @@ body::after {
                 bottom: -10px;
                 left: 40px;
                 right: 40px;
-                background: #3dd17e;
+                background: $contrast;
             }
         }
 
         &__bonus {
-            background: rgba(61, 209, 126, 0.1411764706);
+            //background: rgba(61, 209, 126, 0.1411764706);
+            background: #b2c9ff;
             padding: 12px 20px;
             border-radius: 10px;
             font-size: 14px;
@@ -3591,12 +3650,12 @@ body::after {
         }
 
         &__btn {
-            background: #46df8a;
+            //background: #46df8a;
+            background: $contrast;
             border-radius: 10px;
-            padding: 8px;
+            padding: 10px 15px;
             color: white;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 16px;
             transition: .1s ease-in-out;
 
             &:hover {

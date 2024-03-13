@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {Discord} from "react-discord-widget";
 
 const Footer = () => {
     return (

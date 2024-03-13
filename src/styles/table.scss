@@ -1,9 +1,18 @@
+$bg: #F8F8F8;
+//$bg: rgb(10 14 22);
+//$contrast: #59c589;
+$contrast: #2A354F;
+//$color: white;
+$color: black;
+
 @media screen and (max-width: 500px) {
   .table {
     display: block;
     white-space: nowrap;
   }
 }
+
+
 
 .table {
   border-collapse: collapse;
@@ -16,7 +25,7 @@
   }
 
   th {
-    background: #59c589;
+    background: $contrast;
     color: white;
 
     &:first-child {
@@ -30,7 +39,8 @@
   }
 
   tbody tr {
-    border: 7px solid #0a0e16;
+    //border: 7px solid #0a0e16;
+    border: 7px solid #f8f8f8;
 
     td {
       height: 70px;
@@ -48,7 +58,8 @@
     }
 
     &:nth-child(odd) td {
-      background: #0e141e;
+      //background: #0e141e;
+      background: #e5e5e5;
     }
   }
 

@@ -3,28 +3,80 @@ import {$api} from "../api";
 
 class Store {
     tags = []
-    products = []
+    products = [{
+        "id": 1,
+        "title": "SERF +7£",
+        "price": 90,
+        "price_1": 29,
+        "price_3": 60,
+        "bonus": 21,
+        "bonus_1": 7,
+        "bonus_3": 14,
+        "discount": null,
+        "description": "Это игровая привилегия на режиме \"ANARCHY-M\" она даёт вам уникальные \nвозможности как основной привилегии так и предыдущих.  Посмотреть полный \nсписок возможностей и уникальных плюшек можно на сервере, \nпрописав команду \"/donate\".\n\n» Данная привилегия покупается навсегда.\n» Никакие условия возврата средств за неё не предусматриваются.",
+        "image": "/products/1.png",
+        "TagId": 1,
+        "rcon": "lp user {name} parent addtemp serf 30d",
+        "rcon_1": "lp user {name} parent addtemp serf 90d",
+        "rcon_3": null,
+        "rcon_forever": "lp user {name} parent add serf",
+        "createdAt": "2024-03-13T15:24:11.000Z"
+    }]
     last_buys = []
     activeTag = null
     basket = []
     query = ""
+    isModalOpen = false
+    promo = false
+    modals = {
+        basket: false,
+        productInfo: false,
+        productChoice: false,
+    }
 
     constructor() {
         makeAutoObservable(this)
 
-        this.fetchTags()
-        this.fetchProducts()
-        this.fetchLastBuys()
+        // this.fetchTags()
+        // this.fetchProducts()
+        // this.fetchLastBuys()
     }
 
     getTotalBasket() {
-        return this.basket.map(item => {
-            return this.products.find(product => product.id === item.id).price * item.count
+        const prices = {
+            1: 'price_1',
+            3: 'price_3',
+            forever: 'price',
+        }
+
+        let total = this.basket.map(({id, expiry, count}) => {
+            const product = this.products.find(product => product.id === id)
+            const price = product[prices[expiry]]
+            return price * count
         }).reduce((a, b) => a + b, 0)
+
+        if(this.promo) {
+            total -= (total / 100) * this.promo.amount
+        }
+
+        return total
     }
 
-    addToBasket(id) {
-        this.basket.push({id, count: 1})
+    showModal(name) {
+        this.isModalOpen = true
+        this.modals[name] = true
+        document.body.style.overflow = 'hidden';
+    }
+
+    hideModal(name) {
+        this.isModalOpen = false
+        this.modals[name] = false
+        document.body.style.overflow = 'unset';
+    }
+
+    addToBasket(id, expiry) {
+        this.basket.find((item) => item.id === id) && this.removeFromBasket(id)
+        this.basket.push({id, count: 1, expiry})
     }
 
     addCountToBasket(id) {
@@ -40,6 +92,18 @@ class Store {
 
     setActiveTag(id) {
         this.activeTag = id
+    }
+
+    setPromo(data) {
+        this.promo = data
+    }
+
+    checkPromo(promo) {
+        $api.post('check-promo', {promo}).then(rs => {
+            if(rs.success) {
+                this.setPromo(rs.data)
+            }
+        })
     }
 
     setQuery(data) {

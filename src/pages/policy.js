@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import Layout from "../layouts/main";
+import {Context} from "../index";
 
 const Policy = () => {
+    const {store} = useContext(Context);
+
+    useEffect(() => {
+        store.hideModal('basket')
+    }, []);
+
     return (
         <Layout>
             <div className="normalizer"></div>
