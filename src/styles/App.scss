@@ -2143,7 +2143,7 @@ body::after {
     }
 
     .info-buy__text p + p {
-        margin-top: 1.25rem;
+        margin-top: 0.4rem;
     }
 
     .info-buy__price {
@@ -2317,7 +2317,7 @@ body::after {
     }
 
     .info-buy__text p + p {
-        margin-top: 0.625rem;
+        margin-top: 0.5rem;
     }
 
     .info-buy__price {
@@ -3056,13 +3056,13 @@ body::after {
 
     @supports (margin-top: clamp( 0.625rem , 0.4308252427rem  +  0.9708737864vw , 1.25rem )) {
         .info-buy__text p + p {
-            margin-top: clamp( 0.625rem , 0.4308252427rem  +  0.9708737864vw , 1.25rem );
+            margin-top: 0.4rem;
         }
     }
 
     @supports not (margin-top: clamp( 0.625rem , 0.4308252427rem  +  0.9708737864vw , 1.25rem )) {
         .info-buy__text p + p {
-            margin-top: calc(0.625rem + 0.625 * (100vw - 20rem) / 64.375);
+            margin-top: 0.4rem;
         }
     }
 
