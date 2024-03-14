@@ -3,6 +3,7 @@ import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {API_URL} from "../api";
 import moment from "moment";
+import 'moment/locale/ru';
 
 const LastBuys = () => {
     const {store} = useContext(Context);
