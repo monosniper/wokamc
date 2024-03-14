@@ -929,7 +929,6 @@ body::after {
 [class*=-ibg] img {
     position: absolute;
     width: 300px;
-    height: 300px;
 }
 
 [class*=-ibg_contain] img {
@@ -3637,7 +3636,7 @@ select, option {
 
 .choose {
     .btn-buy {
-        padding: 0.675rem 1.4375rem !important;
+        padding: 0.575rem 0.8375rem !important;
         min-width: auto !important;
     }
 
@@ -3686,6 +3685,7 @@ select, option {
         //background: #3dd17e17;
         background: #e6e9f1;
         flex-direction: column;
+        width: 200px;
         gap: 0.5rem;
         transition: .1s ease-in-out;
 
