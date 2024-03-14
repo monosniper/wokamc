@@ -150,7 +150,6 @@ class Store {
     fetchTags() {
         $api.get('tags').then(rs => {
             this.setTags(rs.data)
-            this.tags.length && this.setActiveTag(this.tags[0].id)
         })
     }
 

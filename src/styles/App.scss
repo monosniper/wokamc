@@ -1063,8 +1063,8 @@ body::after {
     z-index: 10;
 
     .sphere {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         border-radius: 100%;
         display: flex;
         align-items: center;
@@ -1087,7 +1087,7 @@ body::after {
         font-size: 14px;
         z-index: 10;
         left: -130px;
-        bottom: 18px;
+        bottom: 13px;
     }
 }
 
@@ -2132,6 +2132,7 @@ select, option {
     cursor: pointer;
     -webkit-box-flex: 0;
     -ms-flex: 0 0 23%;
+    margin: 1rem;
     flex: 0 0 23%;
     border: 2px solid #E9E9E9;
     gap: 0.9375rem;
