@@ -74,23 +74,26 @@ const Products = () => {
                     <div className="tabs__content">
                         <div className="tabs__body">
                             <div className="products__items">
-                                {store.products.filter(product => product.title.toLowerCase().search(store.query.toLowerCase()) !== -1).map(product => {
-                                    let className = ''
-                                    store.showProduct(product.id)
+                                {store.filteredProduct().map(product => (
+                                    <Product key={'product-' + product.id} product={product}/>
+                                ))}
+                                {/*{store.filteredProduct().map(product => {*/}
+                                {/*    let className = ''*/}
+                                {/*    store.showProduct(product.id)*/}
 
-                                    if (store.activeTag) {
-                                        if (product.TagId !== store.activeTag) {
-                                            className = 'hide'
+                                {/*    if (store.activeTag) {*/}
+                                {/*        if (product.TagId !== store.activeTag) {*/}
+                                {/*            className = 'hide'*/}
 
-                                            setTimeout(() => {
-                                                store.hideProduct(product.id)
-                                            }, 300)
-                                        }
-                                    }
+                                {/*            setTimeout(() => {*/}
+                                {/*                store.hideProduct(product.id)*/}
+                                {/*            }, 300)*/}
+                                {/*        }*/}
+                                {/*    }*/}
 
-                                    return <Product className={className} key={'product-' + product.id}
-                                                    product={product}/>
-                                })}
+                                {/*    return <Product className={className} key={'product-' + product.id}*/}
+                                {/*                    product={product}/>*/}
+                                {/*})}*/}
                             </div>
                         </div>
                     </div>

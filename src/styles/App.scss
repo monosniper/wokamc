@@ -1615,12 +1615,18 @@ body::after {
 }
 
 .product-wrapper {
-    transition: .3s ease-in;
-    height: 350px;
+    transition: .3s ease-in-out;
+    height: 0;
+    transform: scale(0);
 
     &.hide {
         transform: scale(0);
         height: 0;
+    }
+
+    &.show {
+        transform: none;
+        height: 350px;
     }
 }
 

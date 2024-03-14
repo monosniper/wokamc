@@ -89,6 +89,13 @@ class Store {
         this.promo = data
     }
 
+    filteredProduct() {
+        return this.products.filter(({tagId, title}) =>
+            tagId === this.activeTag &&
+            title.toLowerCase().search(this.query.toLowerCase()) !== -1
+        )
+    }
+
     checkPromo(promo) {
         $api.post('check-promo', {promo}).then(({ data }) => {
             if(data.success) {
