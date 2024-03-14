@@ -20,7 +20,7 @@ const LastBuys = () => {
                     {store.last_buys.map(buy => buy.Products.map(product => (
                         <div onClick={() => store.showModal("productInfo", product.id)} className="buy-item" data-popup="#info">
                             <div className="buy-item__label">
-                                {moment(buy.createdAt).lang("ru").fromNow()}
+                                {moment(buy.createdAt).add(1, 'm').lang("ru").fromNow()}
                             </div>
                             <div className="buy-item__img -ibg">
                                 <img src={API_URL + product.image} alt={product.title}/>

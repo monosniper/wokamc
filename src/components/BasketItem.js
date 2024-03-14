@@ -4,9 +4,9 @@ import {API_URL} from "../api";
 import {observer} from "mobx-react-lite";
 
 const expires = {
-    1: 'На месяц',
-    3: 'На 3 месяца',
-    forever: 'Навсегда',
+    1: '» на месяц',
+    3: '» на три месяца',
+    forever: '» навсегда',
 }
 
 const BasketItem = ({item}) => {
@@ -40,7 +40,7 @@ const BasketItem = ({item}) => {
                             autoComplete="off" type="text"
                             name="form[]" value={item.count}/></div>
                         {store.tags.find(tag => tag.id === product.TagId).isPrivilege ? null : (
-                            <button data-quantity-plus type="button" onClick={() => store.addCountToBasket(product.id)}
+                            <button type="button" onClick={() => store.addCountToBasket(product.id)}
                                     className="quantity__button quantity__button_plus"></button>
                         )}
                     </div>

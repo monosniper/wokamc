@@ -27,10 +27,20 @@ const Product = ({product, className}) => {
             </div>
             <div className="product__footer">
                 <div className="product__price">{product.price_1}.00 ₽</div>
-                <button onClick={() => product.Tag.isPrivilege ? store.showModal('productChoice', product.id) : store.addToBasket(product.id)}
-                        className="btn-buy btn-buy_common _icon-cart" type="button">
-                    В корзину
-                </button>
+                {store.basket.find(({id, expiry}) => id === product.id && expiry === '1') ? (
+                    <div className="product__action">
+                        <button className="btn-buy btn-buy_detail" type="button">
+                            {store.basket.find(({id}) => id === product.id).count} шт.
+                        </button>
+                        <button onClick={() => store.removeFromBasket(product.id)} className="btn-del _icon-del"
+                                type="button"></button>
+                    </div>
+                ) : (
+                    <button onClick={() => product.Tag.isPrivilege ? store.showModal('productChoice', product.id) : store.addToBasket(product.id)}
+                            className="btn-buy btn-buy_common _icon-cart" type="button">
+                        В корзину
+                    </button>
+                )}
             </div>
         </div>
 

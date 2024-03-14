@@ -34,7 +34,7 @@ class Store {
 
         let total = this.basket.map(({id, expiry, count}) => {
             const product = this.products.find(product => product.id === id)
-            const price = product[prices[expiry]]
+            const price = expiry ? product[prices[expiry]] : product.price
             return price * count
         }).reduce((a, b) => a + b, 0)
 
