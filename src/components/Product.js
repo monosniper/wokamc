@@ -7,7 +7,7 @@ import ProductChoice from "./modals/ProductChoice";
 
 const Product = ({product, className}) => {
     const {store} = useContext(Context);
-
+    console.log(store.products.find(({id}) => id === product.id))
     return store.products.find(({id}) => id === product.id).hide ? null : (
         <div className={"product-wrapper " + className}>
             <div className={"product"}>
