@@ -23,7 +23,7 @@ const Product = ({product, className}) => {
                 <div className="product__img -ibg">
                     <img src={API_URL + product.image} alt={product.title}/>
                 </div>
-                {product.discount ? <div className="product__discount">{product.discount}%</div> : ''}
+                {product.discount ? <div className="product__discount">-{product.discount}%</div> : ''}
             </div>
             <div className="product__footer">
                 <div className="product__price">{product.price_1}.00 ₽</div>

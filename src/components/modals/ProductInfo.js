@@ -26,6 +26,7 @@ const ProductInfo = ({product, tags}) => {
                         <div className="info-buy__body">
                             <div className="info-buy__img -ibg">
                                 <img src={API_URL + product.image} alt={product.title}/>
+                                {product.discount ? <div className="product__discount">-{product.discount}%</div> : ''}
                             </div>
                             <div className="info-buy__wrapper">
                                 <div className="info-buy__text">

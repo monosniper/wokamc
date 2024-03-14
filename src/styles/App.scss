@@ -804,9 +804,14 @@ body::after {
 
 .info-buy__img {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 23%;
-    flex: 0 0 23%;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
     padding-bottom: 19%;
+
+    .product__discount {
+        top: 0 !important;
+        right: -10px !important;
+    }
 }
 
 .info-buy__text {
@@ -935,7 +940,7 @@ body::after {
 [class*=-ibg] img {
     position: absolute;
     width: 100%;
-    height: 100%;
+    //height: 100%;
     top: 0;
     left: 0;
     -o-object-fit: cover;
@@ -1054,19 +1059,35 @@ body::after {
     position: fixed;
     bottom: 25px;
     right: 30px;
-    width: 70px;
-    height: 70px;
     z-index: 10;
 
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #5865f2;
-    animation: ds infinite 1.5s ease-in-out;
-    transition: .1s ease-in-out;
-    padding: 15px;
-    cursor: pointer;
+    .sphere {
+        width: 70px;
+        height: 70px;
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #5865f2;
+        animation: ds infinite 5.5s ease-in-out;
+        transition: .1s ease-in-out;
+        padding: 15px;
+        cursor: pointer;
+    }
+
+    &::before {
+        content: "Наш Discord";
+        position: absolute;
+        background: #000000ab;
+        color: white;
+        white-space: nowrap;
+        border-radius: 10px;
+        padding: 10px 15px;
+        font-size: 14px;
+        z-index: 10;
+        left: -130px;
+        bottom: 18px;
+    }
 }
 
 .header__container {
@@ -1381,8 +1402,10 @@ body::after {
     font-size: 0.8125rem;
 }
 
-select {
+select, option {
     font-family: Montserrat, sans-serif;
+    font-weight: 600;
+    font-size: 16px !important;
 }
 
 .hero {
@@ -1714,13 +1737,13 @@ select {
         position: absolute;
         top: 60px;
         right: 30px;
-        background: #374b7f70;
+        background: #2a354f;
         border-radius: 20px;
         padding: 8px;
         font-size: 14px;
-        color: #1d2436;
+        color: white;
         font-weight: bold;
-        border: 1px solid #1d2436;
+        //border: 1px solid #1d2436;
     }
 
     &__container {
@@ -3603,6 +3626,9 @@ select {
 @keyframes ds {
     0% {
         transform: rotate(0);
+    }
+    10% {
+        transform: rotate(360deg);
     }
     100% {
         transform: rotate(360deg);

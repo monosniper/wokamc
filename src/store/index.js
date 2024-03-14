@@ -1,12 +1,11 @@
 import {makeAutoObservable} from "mobx";
 import {$api} from "../api";
-import products from "../components/Products";
 
 class Store {
     tags = []
     products = []
     last_buys = []
-    activeTag = null
+    activeTag = undefined
     activeMode = 'ANARCHY-M'
     basket = []
     query = ""
