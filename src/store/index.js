@@ -90,8 +90,8 @@ class Store {
     }
 
     filteredProduct() {
-        return this.products.filter(({tagId, title}) =>
-            tagId === this.activeTag &&
+        return this.products.filter(({TagId, title}) =>
+            TagId === this.activeTag &&
             title.toLowerCase().search(this.query.toLowerCase()) !== -1
         )
     }
