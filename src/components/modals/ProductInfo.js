@@ -43,7 +43,7 @@ const ProductInfo = ({product, tags}) => {
                                                     type="button"></button>
                                         </div>
                                     ) : (
-                                        <button className="btn-buy btn-buy_common _icon-ar-down" type="button" onClick={() => {store.showModal('productChoice', product.id);store.hideModal('productInfo', product.id)}}>
+                                        <button className="btn-buy btn-buy_common _icon-ar-down" type="button" onClick={() => {store.addToBasket(product.id);store.hideModal('productInfo', product.id)}}>
                                             В корзину
                                         </button>
                                     )}
