@@ -4,11 +4,19 @@ import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import ProductInfo from "./modals/ProductInfo";
 import ProductChoice from "./modals/ProductChoice";
+import {motion} from "framer-motion";
 
 const Product = ({product, className}) => {
     const {store} = useContext(Context);
 
-    return <div className={"product-wrapper " + className}>
+    return <motion.div
+        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0 }}
+        exit={{ opacity: 0, scale: 0 }}
+        transition={{ duration: 0.5 }}
+        layout
+        className={"product-wrapper"}
+    >
         <div className={"product"}>
             <div className={"product__container"} onClick={() => store.showModal('productInfo', product.id)}>
                 <div className="product__title">{product.title}</div>
@@ -28,7 +36,7 @@ const Product = ({product, className}) => {
 
         <ProductInfo product={product} tags={store.tags}/>
         <ProductChoice product={product}/>
-    </div>;
+    </motion.div>;
 };
 
 export default observer(Product);

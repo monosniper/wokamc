@@ -1,8 +1,8 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {Context} from "../index";
-import {toJS} from "mobx";
 import {observer} from "mobx-react-lite";
 import Product from "./Product";
+import {motion, AnimatePresence} from "framer-motion";
 
 const Products = () => {
     const {store} = useContext(Context);
@@ -73,10 +73,15 @@ const Products = () => {
                     </nav>
                     <div className="tabs__content">
                         <div className="tabs__body">
-                            <div className="products__items">
-                                {store.filteredProduct().map(product => (
-                                    <Product key={'product-' + product.id} product={product}/>
-                                ))}
+                            <motion.div
+                                layout
+                                className="products__items"
+                            >
+                                <AnimatePresence>
+                                    {store.filteredProduct().map(product => (
+                                        <Product key={'product-' + product.id} product={product}/>
+                                    ))}
+                                </AnimatePresence>
                                 {/*{store.filteredProduct().map(product => {*/}
                                 {/*    let className = ''*/}
                                 {/*    store.showProduct(product.id)*/}
@@ -94,7 +99,7 @@ const Products = () => {
                                 {/*    return <Product className={className} key={'product-' + product.id}*/}
                                 {/*                    product={product}/>*/}
                                 {/*})}*/}
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
