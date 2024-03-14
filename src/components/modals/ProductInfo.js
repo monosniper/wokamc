@@ -33,7 +33,7 @@ const ProductInfo = ({product, tags}) => {
                                     <p dangerouslySetInnerHTML={{ __html: product.description }}></p>
                                 </div>
                                 <div className="info-buy__price">
-                                    <span>{product.price_1}.00 ₽</span>
+                                    <span>{product.Tag.isPrivilege ? product.price_1 : product.price}.00 ₽</span>
                                     {store.basket.find(({id}) => id === product.id) ? (
                                         <div className="product__action">
                                             <button className="btn-buy btn-buy_detail" type="button">

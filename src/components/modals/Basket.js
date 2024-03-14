@@ -5,6 +5,12 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import {Link} from "react-router-dom";
 
+const black_list = [
+    'all',
+    'alloffline',
+    'allonline',
+]
+
 const Basket = () => {
     const {store} = useContext(Context);
 
@@ -54,12 +60,14 @@ const Basket = () => {
             name.trim() !== '' && email.trim() !== ''
         ) {
             if(checked) {
-                if(store.basket.length) store.pay({
-                    name, email, promo
-                })
+                if(store.basket.length)
+                    if(black_list.includes(name.trim())) {
+                        store.pay({
+                            name: name.trim(), email: email.trim(), promo
+                        })
+                    } else showError('Недопустимый никнейм!')
                 else showError('Ваша корзина пуста!')
-            }
-            else showError('Ознакомтесь с правилами и политикой конфиденциальности!')
+            } else showError('Ознакомтесь с правилами и политикой конфиденциальности!')
         } else showError('Необходио заполнить поля никнейм и email!')
     }
 
