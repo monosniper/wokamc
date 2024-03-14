@@ -2,6 +2,7 @@ import React, {useContext, useEffect} from 'react';
 import {Context} from "../index";
 import {observer} from "mobx-react-lite";
 import {API_URL} from "../api";
+import moment from "moment";
 
 const LastBuys = () => {
     const {store} = useContext(Context);
@@ -16,9 +17,9 @@ const LastBuys = () => {
                 <h2 className="last-buy__title title">Последние покупки:</h2>
                 <div className="last-buy__items">
                     {store.last_buys.map(buy => buy.Products.map(product => (
-                        <div className="buy-item" data-popup="#info">
+                        <div onClick={() => store.showModal("productInfo", product.id)} className="buy-item" data-popup="#info">
                             <div className="buy-item__label">
-                                {buy.created_at}
+                                {moment(buy.createdAt).lang("ru").fromNow()}
                             </div>
                             <div className="buy-item__img -ibg">
                                 <img src={API_URL + product.image} alt={product.title}/>
