@@ -26,7 +26,7 @@ const Product = ({product, className}) => {
                 {product.discount ? <div className="product__discount">-{product.discount}%</div> : ''}
             </div>
             <div className="product__footer">
-                <div className="product__price">{product.price_1}.00 ₽</div>
+                <div className="product__price">{product.Tag.isPrivilege ? product.price_1 : product.price}.00 ₽</div>
                 {store.basket.find(({id}) => id === product.id) ? (
                     <div className="product__action">
                         <button className="btn-buy btn-buy_detail" type="button">
