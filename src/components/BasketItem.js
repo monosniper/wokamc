@@ -3,6 +3,12 @@ import {Context} from "../index";
 import {API_URL} from "../api";
 import {observer} from "mobx-react-lite";
 
+const expires = {
+    1: 'На месяц',
+    3: 'На 3 месяца',
+    forever: 'Навсегда',
+}
+
 const BasketItem = ({item}) => {
     const {store} = useContext(Context);
     const product = store.products.find(product => product.id === item.id)
@@ -18,13 +24,11 @@ const BasketItem = ({item}) => {
                     <div className="cart-product__label">
                         <svg width="20" height="20" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke="#2a354f"
-                                  d="M9.9996 2.08331L7.45252 7.28248L1.66669 8.12081L5.85794 12.2183L4.85585 17.9166L10 15.175L15.1438 17.9166L14.15 12.2187L18.3334 8.12123L12.5796 7.28248L10 2.08331H9.9996Z"
-                                  stroke-width="2"
-                                  stroke-linejoin="round"></path>
+                            <path stroke="#2a354f" d="M9.9996 2.08331L7.45252 7.28248L1.66669 8.12081L5.85794 12.2183L4.85585 17.9166L10 15.175L15.1438 17.9166L14.15 12.2187L18.3334 8.12123L12.5796 7.28248L10 2.08331H9.9996Z"></path>
                         </svg>
                         <span>{store.tags.find(tag => tag.id === product.TagId).name}</span>
                     </div>
+                    {item.expiry ? <div className="cart-product__expiry">{expires[item.expiry]}</div> : null}
                 </div>
                 <div className="cart-product__clm">
                     <div className="cart-product__price">{item.count * product.price}.00 ₽</div>

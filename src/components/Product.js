@@ -27,7 +27,7 @@ const Product = ({product, className}) => {
             </div>
             <div className="product__footer">
                 <div className="product__price">{product.price_1}.00 ₽</div>
-                <button onClick={() => store.showModal('productChoice', product.id)}
+                <button onClick={() => product.Tag.isPrivilege ? store.showModal('productChoice', product.id) : store.addToBasket(product.id)}
                         className="btn-buy btn-buy_common _icon-cart" type="button">
                     В корзину
                 </button>
@@ -35,7 +35,7 @@ const Product = ({product, className}) => {
         </div>
 
         <ProductInfo product={product} tags={store.tags}/>
-        <ProductChoice product={product}/>
+        {product.Tag.isPrivilege ? <ProductChoice product={product}/> : null}
     </motion.div>;
 };
 

@@ -53,9 +53,12 @@ const Basket = () => {
         if(
             name.trim() !== '' && email.trim() !== ''
         ) {
-            if(checked) store.pay({
-                name, email, promo
-            })
+            if(checked) {
+                if(store.basket.length) store.pay({
+                    name, email, promo
+                })
+                else showError('Ваша корзина пуста!')
+            }
             else showError('Ознакомтесь с правилами и политикой конфиденциальности!')
         } else showError('Необходио заполнить поля никнейм и email!')
     }
@@ -119,9 +122,9 @@ const Basket = () => {
                                     <div className="form__column">
                                         <div className="label">Промокод <span>(если есть):</span></div>
                                         <input value={promo} onChange={(e) => setPromo(e.target.value)} className="form__input input" autoComplete="off" type="text"
-                                               placeholder="xxx"/>
+                                               placeholder="XXXXX"/>
                                     </div>
-                                    {store.promo ? <div className="promo-text">{promo} -${store.promo.amount}%</div> : null}
+                                    {store.promo && promo === store.promo.name ? <div className="promo-text">{promo} -{store.promo.amount}%</div> : null}
                                     <div className="form__column">
                                         <div className="checkbox">
                                             <input id="c_" data-error="Ошибка" className="checkbox__input"

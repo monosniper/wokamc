@@ -7,6 +7,7 @@ class Store {
     products = []
     last_buys = []
     activeTag = null
+    activeMode = 'ANARCHY-M'
     basket = []
     query = ""
     isModalOpen = false
@@ -85,13 +86,18 @@ class Store {
         this.activeTag = id
     }
 
+    setActiveMode(id) {
+        this.activeMode = id
+    }
+
     setPromo(data) {
         this.promo = data
     }
 
     filteredProduct() {
-        return this.products.filter(({TagId, title}) =>
+        return this.products.filter(({TagId, title, mode}) =>
             (this.activeTag !== undefined ? (TagId === this.activeTag) : true) &&
+            this.activeMode === mode &&
             title.toLowerCase().search(this.query.toLowerCase()) !== -1
         )
     }

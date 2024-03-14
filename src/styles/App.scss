@@ -21,6 +21,12 @@ html {
     scroll-behavior: smooth;
 }
 
+.coin-chart {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+}
+
 *::-webkit-scrollbar {
     width: 5px;
     background: transparent;
@@ -586,7 +592,7 @@ body::after {
 }
 
 .popup_small .popup__content {
-    max-width: 56.25rem;
+    max-width: 45.25rem;
 }
 
 .lock .popup__content {
@@ -712,6 +718,12 @@ body::after {
     margin-bottom: 0.5rem;
 }
 
+.cart-product__expiry {
+    margin-top: 1rem;
+    font-size: 16px;
+    color: #1d2436;
+}
+
 .cart-product__label {
     color: $contrast;
     display: -webkit-inline-box;
@@ -749,6 +761,16 @@ body::after {
 
 .info-buy__title {
     font-weight: 700;
+    text-transform: uppercase;
+}
+
+.graph-tooltip {
+    position: fixed;
+    color: white;
+    background: #00000082;
+    border-radius: 5px;
+    padding: 6px 15px;
+    font-size: 14px;
 }
 
 .info-buy__label {
@@ -782,15 +804,15 @@ body::after {
 
 .info-buy__img {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 19%;
-    flex: 0 0 19%;
+    -ms-flex: 0 0 23%;
+    flex: 0 0 23%;
     padding-bottom: 19%;
 }
 
 .info-buy__text {
     font-weight: 500;
     font-size: 1rem;
-    border-bottom: 0.0625rem solid rgba(17, 17, 17, 0.05);
+    //border-bottom: 0.0625rem solid rgba(17, 17, 17, 0.05);
 }
 
 .info-buy__price {
@@ -1359,6 +1381,10 @@ body::after {
     font-size: 0.8125rem;
 }
 
+select {
+    font-family: Montserrat, sans-serif;
+}
+
 .hero {
     min-height: 100vh;
     height: 100%;
@@ -1369,7 +1395,7 @@ body::after {
 
     &__overlay {
         background: #03101a;
-        opacity: .7;
+        opacity: .3;
         position: absolute;
         top: 0;
         right: 0;
@@ -1794,7 +1820,6 @@ body::after {
     font-weight: 600;
     font-size: 1.25rem;
     line-height: 1.2;
-    text-transform: uppercase;
 }
 
 .product__img {
