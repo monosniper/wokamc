@@ -61,7 +61,7 @@ const Basket = () => {
         ) {
             if(checked) {
                 if(store.basket.length)
-                    if(black_list.includes(name.trim())) {
+                    if(!black_list.includes(name.trim())) {
                         store.pay({
                             name: name.trim(), email: email.trim(), promo
                         })
