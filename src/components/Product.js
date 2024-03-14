@@ -27,7 +27,7 @@ const Product = ({product, className}) => {
             </div>
             <div className="product__footer">
                 <div className="product__price">{product.price_1}.00 ₽</div>
-                {store.basket.find(({id, expiry}) => id === product.id && expiry === '1') ? (
+                {store.basket.find(({id}) => id === product.id) ? (
                     <div className="product__action">
                         <button className="btn-buy btn-buy_detail" type="button">
                             {store.basket.find(({id}) => id === product.id).count} шт.

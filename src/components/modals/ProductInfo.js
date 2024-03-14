@@ -34,7 +34,7 @@ const ProductInfo = ({product, tags}) => {
                                 </div>
                                 <div className="info-buy__price">
                                     <span>{product.price_1}.00 ₽</span>
-                                    {store.basket.find(({id, expiry}) => id === product.id && expiry === '1') ? (
+                                    {store.basket.find(({id}) => id === product.id) ? (
                                         <div className="product__action">
                                             <button className="btn-buy btn-buy_detail" type="button">
                                                 {store.basket.find(({id}) => id === product.id).count} шт.

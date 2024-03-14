@@ -40,7 +40,7 @@ const BasketItem = ({item}) => {
                             autoComplete="off" type="text"
                             name="form[]" value={item.count}/></div>
                         {store.tags.find(tag => tag.id === product.TagId).isPrivilege ? null : (
-                            <button type="button" onClick={() => store.addCountToBasket(product.id)}
+                            <button data-quantity-plus type="button" onClick={() => store.addCountToBasket(product.id)}
                                     className="quantity__button quantity__button_plus"></button>
                         )}
                     </div>
