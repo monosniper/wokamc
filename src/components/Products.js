@@ -56,20 +56,20 @@ const Products = () => {
                         <div className="tabs__body">
                             <div className="products__items">
                                 {store.products.filter(product => product.title.toLowerCase().search(store.query.toLowerCase()) !== -1).map(product => {
-                                    let hide = false
                                     let className = ''
+                                    store.showProduct(product.id)
 
                                     if (store.activeTag) {
                                         if (product.TagId !== store.activeTag) {
                                             className = 'hide'
 
                                             setTimeout(() => {
-                                                hide = true
+                                                store.hideProduct(product.id)
                                             }, 300)
                                         }
                                     }
 
-                                    return <Product hide={hide} className={className} key={'product-' + product.id}
+                                    return <Product className={className} key={'product-' + product.id}
                                                     product={product}/>
                                 })}
                             </div>

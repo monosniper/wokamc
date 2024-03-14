@@ -53,9 +53,10 @@ const Basket = () => {
         if(
             name.trim() !== '' && email.trim() !== ''
         ) {
-            if(checked) {
-
-            }  else showError('Ознакомтесь с правилами и политикой конфиденциальности!')
+            if(checked) store.pay({
+                name, email, promo
+            })
+            else showError('Ознакомтесь с правилами и политикой конфиденциальности!')
         } else showError('Необходио заполнить поля никнейм и email!')
     }
 

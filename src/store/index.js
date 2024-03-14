@@ -1,5 +1,6 @@
 import {makeAutoObservable} from "mobx";
 import {$api} from "../api";
+import products from "../components/Products";
 
 class Store {
     tags = []
@@ -89,15 +90,37 @@ class Store {
     }
 
     checkPromo(promo) {
-        $api.post('check-promo', {promo}).then(rs => {
-            if(rs.success) {
-                this.setPromo(rs.data)
+        $api.post('check-promo', {promo}).then(({ data }) => {
+            if(data.success) {
+                this.setPromo(data.data)
             }
+        })
+    }
+
+    pay(data) {
+        $api.post('pay', {
+            ...data, amount: this.getTotalBasket(), products: this.basket
+        }).then(({ data }) => {
+            window.location.href = data.url
         })
     }
 
     setQuery(data) {
         this.query = data
+    }
+
+    showProduct(id) {
+        this.products.map(product => {
+            if(product.id === id) product.hide = false
+            return product
+        })
+    }
+
+    hideProduct(id) {
+        this.products.map(product => {
+            if(product.id === id) product.hide = true
+            return product
+        })
     }
 
     setTags(tags) {
@@ -121,7 +144,10 @@ class Store {
 
     fetchProducts() {
         $api.get('products').then(rs => {
-            this.setProducts(rs.data)
+            this.setProducts(rs.data.map(product => {
+                product.hide = false
+                return product
+            }))
             const modals = []
 
             rs.data.forEach(({id}) => {
