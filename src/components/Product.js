@@ -5,10 +5,10 @@ import {observer} from "mobx-react-lite";
 import ProductInfo from "./modals/ProductInfo";
 import ProductChoice from "./modals/ProductChoice";
 
-const Product = ({product, className, hide}) => {
+const Product = ({product, className}) => {
     const {store} = useContext(Context);
 
-    return hide ? null : (
+    return store.products.find(({id}) => id === product.id).hide ? null : (
         <div className={"product-wrapper " + className}>
             <div className={"product"}>
                 <div className={"product__container"} onClick={() => store.showModal('productInfo', product.id)}>
