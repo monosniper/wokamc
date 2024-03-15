@@ -41,142 +41,145 @@ const Servers = () => {
 
             modes.forEach((mode, i) => {
                 const data = store.online[mode]
-                const ref = refs[i]
 
-                const parentWidth = ref.current?.parentElement?.clientWidth || 400;
+                if(data.length) {
+                    const ref = refs[i]
 
-                const width = parentWidth - 40;
-                const height = 150;
+                    const parentWidth = ref.current?.parentElement?.clientWidth || 400;
 
-                const online_array = data.map(({online}) => online)
+                    const width = parentWidth - 40;
+                    const height = 150;
 
-                const maxValue = d3.max(online_array) || 1;
-                const minValue = d3.min(online_array) || 0;
+                    const online_array = data.map(({online}) => online)
 
-                // Очищаем предыдущий график, если он был
-                d3.select(ref.current).selectAll("*").remove();
+                    const maxValue = d3.max(online_array) || 1;
+                    const minValue = d3.min(online_array) || 0;
 
-                // Создаем SVG элемент
-                const svg = d3
-                    .select(ref.current)
-                    .attr("width", width)
-                    .attr("height", height);
+                    // Очищаем предыдущий график, если он был
+                    d3.select(ref.current).selectAll("*").remove();
 
-                // Создаем шкалу для x и y
-                const xScale = d3
-                    .scaleLinear()
-                    .domain([
-                        0,
-                        online_array.length > 0 ? online_array.length - 1 : 1,
-                    ]) // Изменили диапазон
-                    .range([10, width - 10]);
+                    // Создаем SVG элемент
+                    const svg = d3
+                        .select(ref.current)
+                        .attr("width", width)
+                        .attr("height", height);
 
-                const yScale = d3
-                    .scaleLinear()
-                    .domain([minValue, maxValue])
-                    .range([height - 10, 20]);
+                    // Создаем шкалу для x и y
+                    const xScale = d3
+                        .scaleLinear()
+                        .domain([
+                            0,
+                            online_array.length > 0 ? online_array.length - 1 : 1,
+                        ]) // Изменили диапазон
+                        .range([10, width - 10]);
 
-                // Создаем градиент для заливки
-                const gradient = svg
-                    .append("defs")
-                    .append("linearGradient")
-                    .attr("id", "chartGradient")
-                    .attr("x1", "100%")
-                    .attr("x2", "100%")
-                    .attr("y1", "0%")
-                    .attr("y2", "100%");
+                    const yScale = d3
+                        .scaleLinear()
+                        .domain([minValue, maxValue])
+                        .range([height - 10, 20]);
 
-                gradient
-                    .append("stop")
-                    .attr("offset", "0%")
-                    .attr("stop-color", "#5c81d7"); // Начальный цвет градиента (яркий)
+                    // Создаем градиент для заливки
+                    const gradient = svg
+                        .append("defs")
+                        .append("linearGradient")
+                        .attr("id", "chartGradient")
+                        .attr("x1", "100%")
+                        .attr("x2", "100%")
+                        .attr("y1", "0%")
+                        .attr("y2", "100%");
 
-                gradient
-                    .append("stop")
-                    .attr("offset", "100%")
-                    .attr("stop-color", "#a4b8e70d"); // Конечный цвет градиента (тусклый)
+                    gradient
+                        .append("stop")
+                        .attr("offset", "0%")
+                        .attr("stop-color", "#5c81d7"); // Начальный цвет градиента (яркий)
 
-                // Создаем кривую Безье
-                d3.curveCardinal.tension(0.3); // Здесь можно настроить уровень напряжения (tension)
+                    gradient
+                        .append("stop")
+                        .attr("offset", "100%")
+                        .attr("stop-color", "#a4b8e70d"); // Конечный цвет градиента (тусклый)
 
-                // Создаем заливку под линией с использованием градиента
-                const area = d3
-                    .area()
-                    .x((_, i) => xScale(i))
-                    .y0(height) // Начало заливки на дне графика
-                    .y1((d) => yScale(d));
+                    // Создаем кривую Безье
+                    d3.curveCardinal.tension(0.3); // Здесь можно настроить уровень напряжения (tension)
 
-                svg
-                    .style("overflow", "visible")
+                    // Создаем заливку под линией с использованием градиента
+                    const area = d3
+                        .area()
+                        .x((_, i) => xScale(i))
+                        .y0(height) // Начало заливки на дне графика
+                        .y1((d) => yScale(d));
 
-                // Рисуем заливку с градиентом
-                svg
-                    .append("path")
-                    .datum(online_array)
-                    .transition()
-                    .duration(500)
-                    .attr("fill", "url(#chartGradient)") // Используем градиент
-                    .attr("d", area);
+                    svg
+                        .style("overflow", "visible")
 
-                // Создаем линию с кривой Безье
-                const line = d3
-                    .line()
-                    .x((_, i) => xScale(i))
-                    .y((d) => yScale(d))
-                    .curve(d3.curveCardinal.tension(0.3));
+                    // Рисуем заливку с градиентом
+                    svg
+                        .append("path")
+                        .datum(online_array)
+                        .transition()
+                        .duration(500)
+                        .attr("fill", "url(#chartGradient)") // Используем градиент
+                        .attr("d", area);
 
-                // Рисуем линию поверх заливки
-                svg
-                    .append("path")
-                    .datum(online_array)
-                    .transition()
-                    .duration(200)
-                    .attr("fill", "none") // Нет заливки
-                    .attr("stroke", "#2a354f") // Цвет линии
-                    .attr("stroke-width", 4) // Толщина линии
-                    .attr("d", line);
+                    // Создаем линию с кривой Безье
+                    const line = d3
+                        .line()
+                        .x((_, i) => xScale(i))
+                        .y((d) => yScale(d))
+                        .curve(d3.curveCardinal.tension(0.3));
 
-                svg
-                    .selectAll(".data-point")
-                    .data(online_array)
-                    .enter()
-                    .append("circle")
-                    .attr("class", "data-point")
-                    .attr("cx", (_, i) => xScale(i))
-                    .attr("cy", (d) => yScale(d))
-                    .attr("r", 4) // Размер точки
-                    .attr("fill", "#2e4477")
-                    .style("fill-opacity", 1);
+                    // Рисуем линию поверх заливки
+                    svg
+                        .append("path")
+                        .datum(online_array)
+                        .transition()
+                        .duration(200)
+                        .attr("fill", "none") // Нет заливки
+                        .attr("stroke", "#2a354f") // Цвет линии
+                        .attr("stroke-width", 4) // Толщина линии
+                        .attr("d", line);
 
-                // Обработчик наведения на точку
-                svg
-                    .selectAll(".data-point")
-                    .attr("fill", "#2e4477") // Цвет точки
-                    .style("fill-opacity", 0);
+                    svg
+                        .selectAll(".data-point")
+                        .data(online_array)
+                        .enter()
+                        .append("circle")
+                        .attr("class", "data-point")
+                        .attr("cx", (_, i) => xScale(i))
+                        .attr("cy", (d) => yScale(d))
+                        .attr("r", 4) // Размер точки
+                        .attr("fill", "#2e4477")
+                        .style("fill-opacity", 1);
 
-                const leftScale = d3.scaleLinear()
-                    .domain([minValue, maxValue])
-                    .range([height, 0]);
+                    // Обработчик наведения на точку
+                    svg
+                        .selectAll(".data-point")
+                        .attr("fill", "#2e4477") // Цвет точки
+                        .style("fill-opacity", 0);
 
-                const y_axis = d3.axisLeft()
-                    .scale(leftScale);
+                    const leftScale = d3.scaleLinear()
+                        .domain([minValue, maxValue])
+                        .range([height, 0]);
 
-                svg.append("g")
-                    .attr("transform", "translate(-5, 0)")
-                    .attr("color", "#2e4477")
-                    .call(y_axis);
+                    const y_axis = d3.axisLeft()
+                        .scale(leftScale);
 
-                const scale = d3.scaleUtc()
-                    .domain([data[0].created_at, data[data.length-1].created_at])
-                    .range([0, width]);
+                    svg.append("g")
+                        .attr("transform", "translate(-5, 0)")
+                        .attr("color", "#2e4477")
+                        .call(y_axis);
 
-                const x_axis = d3.axisBottom()
-                    .scale(scale);
+                    const scale = d3.scaleUtc()
+                        .domain([data[0].created_at, data[data.length-1].created_at])
+                        .range([0, width]);
 
-                svg.append("g")
-                    .attr("transform", "translate(0, "+(height+5)+")")
-                    .attr("color", "#2e4477")
-                    .call(x_axis);
+                    const x_axis = d3.axisBottom()
+                        .scale(scale);
+
+                    svg.append("g")
+                        .attr("transform", "translate(0, "+(height+5)+")")
+                        .attr("color", "#2e4477")
+                        .call(x_axis);
+                }
             })
         };
 
