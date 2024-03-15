@@ -37,9 +37,10 @@ const Servers = () => {
 
         const draw = () => {
             const refs = [svgRef, svgRef2]
+            const modes = ['ANARCHY-M', 'GRIEF-M']
 
-            for(let i = 0; i <= 1; refs) {
-                const data = store.online[i]
+            modes.forEach((mode, i) => {
+                const data = store.online[mode]
                 const ref = refs[i]
 
                 const parentWidth = ref.current?.parentElement?.clientWidth || 400;
@@ -176,7 +177,7 @@ const Servers = () => {
                     .attr("transform", "translate(0, "+(height+5)+")")
                     .attr("color", "#2e4477")
                     .call(x_axis);
-            };
+            })
         };
 
         draw();

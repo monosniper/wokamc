@@ -162,11 +162,12 @@ class Store {
     fetchOnline() {
         $api.get('history').then(rs => {
             const online = this.online
+
             rs.data.forEach(({data}) => {
                 online['ANARCHY-M'] = data['ANARCHY-M']
                 online['GRIEF-M'] = data['GRIEF-M']
             })
-            console.log(online)
+
             this.setOnline(online)
         })
     }
