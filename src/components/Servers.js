@@ -33,8 +33,7 @@ const Servers = () => {
     }
 
     useEffect(() => {
-        // if (!("graph_today" in data) || type === "my" || data.graph_today === null)
-        //     return;
+        if (!store.online) return;
 
         const draw = () => {
             const refs = [svgRef, svgRef2]

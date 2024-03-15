@@ -11,7 +11,7 @@ class Store {
     query = ""
     isModalOpen = false
     promo = false
-    online = {0: [], 1: []}
+    online = {'ANARCHY-M': [], 'GRIEF-M': []}
     modals = {
         basket: false,
         productInfo: [],
@@ -161,7 +161,13 @@ class Store {
 
     fetchOnline() {
         $api.get('history').then(rs => {
-            this.setOnline(rs.data)
+            const online = this.online
+            rs.data.forEach(({data}) => {
+                online['ANARCHY-M'] = data['ANARCHY-M']
+                online['GRIEF-M'] = data['GRIEF-M']
+            })
+            console.log(online)
+            this.setOnline(online)
         })
     }
 
