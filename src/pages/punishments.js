@@ -58,7 +58,7 @@ const Punishments = () => {
                 scroll_id={'table'}
                 btn_text={"К таблице"}
                 text={"Скорее заходи на сервер и получай массу положительных эмоций! Ты сможешь почувствовать себя лидером среди других! Здесь ты сможешь отдохнуть и распробовать хорошую механику пвп на ПВП-арене и на наших дуэлях!"}
-                title={"HIGHTCORE"}
+                title={"WOKA"}
                 title_2={"Наказания сервера"}
                 video={"hero-2.webp"}
                 container_styles={{flexDirection: 'row-reverse'}}

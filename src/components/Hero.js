@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import {Discord} from "react-discord-widget";
 
-const IP = "play.hightcore.org"
+// const IP = "play.hightcore.org"
+const IP = "mc.woka.fun"
 
 const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_styles}) => {
     const [copied, setCopied] = useState(false)
@@ -52,7 +53,7 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
                 <div className="hero__img">
                     <div className="discord">
                         <Discord
-                            id="451861943364616192"
+                            id="990485164687785994"
                             width={300}
                             height={400}
                             theme="dark"

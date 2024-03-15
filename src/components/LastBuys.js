@@ -7,8 +7,9 @@ import 'moment/locale/ru';
 import Slider from "react-styled-carousel";
 
 const responsive = [
-    { breakPoint: 1280, cardsToShow: 4 }, // this will be applied if screen size is greater than 1280px. cardsToShow will become 4.
+    { breakPoint: 1280, cardsToShow: 4 },
     { breakPoint: 760, cardsToShow: 2 },
+    { breakPoint: 500, cardsToShow: 1 },
 ];
 
 const LastBuys = () => {
@@ -28,10 +29,11 @@ const LastBuys = () => {
                     showArrows={false}
                     padding={'1px'}
                 >
-                    {store.last_buys.map(buy => buy.Products.map(product => (
+                    {store.last_buys.map(buy => buy.Products.filter(({mode}) => mode === store.activeMode).map(product => (
                         <div key={'buy-'+buy.id+'-'+product.id} onClick={() => store.showModal("productInfo", product.id)} className="buy-item" data-popup="#info">
                             <div className="buy-item__label">
-                                {moment(buy.createdAt).subtract(1, 'm').lang("ru").fromNow()}
+                                {/*{moment(buy.createdAt).subtract(1, 'm').lang("ru").fromNow()}*/}
+                                {moment(buy.createdAt).lang("ru").fromNow()}
                             </div>
                             <div className="buy-item__img -ibg">
                                 <img src={API_URL + product.image} alt={product.title}/>

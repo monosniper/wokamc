@@ -419,6 +419,7 @@ textarea.input {
     height: 15px;
     border-radius: 0.3125rem;
     background-color: #fff;
+    border: 1px solid #dddddd;
 }
 
 .checkbox__label::after {
@@ -1326,6 +1327,11 @@ body::after {
     padding-bottom: 3rem;
 }
 
+.footer__left {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer__about {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 48%;
@@ -1338,6 +1344,16 @@ body::after {
     align-items: center;
     gap: 0.5rem;
     font-size: 0.8125rem;
+}
+
+.footer__ip {
+    font-size: 12px;
+    margin-top: 1rem;
+    color: #a7a7a7;
+
+    p {
+        margin-bottom: .2rem;
+    }
 }
 
 .footer__about p {
@@ -1354,6 +1370,10 @@ body::after {
     opacity: 0.5;
 }
 
+.checkbox__text a {
+    text-decoration: underline;
+}
+
 .footer__logo {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 2.5rem;
@@ -1366,10 +1386,23 @@ body::after {
     gap: 0.625rem;
 }
 
+.footer__center {
+    flex: 0 0 25%;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: #a7a7a7;
+    
+    a {
+        text-decoration: underline;
+    }
+}
+
 .footer__links {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 48%;
-    flex: 0 0 48%;
+    -ms-flex: 0 0 30%;
+    flex: 0 0 30%;
 }
 
 .footer__bottom {
@@ -1690,6 +1723,25 @@ select, option {
     p {
         margin-bottom: .5rem;
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .cart-product__img {
+        display: flex;
+        justify-content: center;
+
+        img {
+            height: 100%;
+            width: auto;
+            left: auto;
+        }
+    }
+
+    .cart-product__clm {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -2147,7 +2199,7 @@ select, option {
     -ms-flex-align: center;
     align-items: center;
     text-align: center;
-    padding: 2.0625rem 1.5rem 0.9375rem 1.5rem;
+    padding: 1.0625rem 1.5rem 0.9375rem;
     border-radius: 1.25rem;
     background: radial-gradient(51.71% 75.34% at 100% 100%, rgba(42, 53, 79, 0.1019607843) 0%, rgba(42, 53, 79, 0) 100%), radial-gradient(47.86% 69.72% at 0% 0%, rgba(42, 53, 79, 0.1019607843) 0%, rgba(42, 53, 79, 0) 100%);
 }

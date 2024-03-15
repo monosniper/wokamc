@@ -15,7 +15,7 @@ const ProductChoice = ({product}) => {
                     <div className="choose__items">
                         <div className="choose-item">
                             <div className="choose-item__title">1 месяц</div>
-                            <div className="choose-item__bonus"><b>+{product.bonus_1} £</b> <br/><span>кешбек</span></div>
+                            <div className="choose-item__bonus"><b>+{product.bonus_1} €</b> <br/><span>кешбек</span></div>
                             <div className="choose-item__price">
                                 <span>Стоимость</span>
                                 <span>{product.price_1}.00 ₽</span>
@@ -34,7 +34,7 @@ const ProductChoice = ({product}) => {
                         </div>
                         <div className="choose-item">
                             <div className="choose-item__title">3 месяца</div>
-                            <div className="choose-item__bonus"><b>+{product.bonus_3} £</b><br/> <span>кешбек</span></div>
+                            <div className="choose-item__bonus"><b>+{product.bonus_3} €</b><br/> <span>кешбек</span></div>
                             <div className="choose-item__price">
                                 <span>Стоимость</span>
                                 <span>{product.price_3}.00 ₽</span>
@@ -53,7 +53,7 @@ const ProductChoice = ({product}) => {
                         </div>
                         <div className="choose-item">
                             <div className="choose-item__title">Навсегда</div>
-                            <div className="choose-item__bonus"><b>+{product.bonus} £</b><br/> <span>кешбек</span></div>
+                            <div className="choose-item__bonus"><b>+{product.bonus} €</b><br/> <span>кешбек</span></div>
                             <div className="choose-item__price">
                                 <span>Стоимость</span>
                                 <span>{product.price}.00 ₽</span>

@@ -11,6 +11,7 @@ class Store {
     query = ""
     isModalOpen = false
     promo = false
+    online = {0: [], 1: []}
     modals = {
         basket: false,
         productInfo: [],
@@ -23,6 +24,7 @@ class Store {
         this.fetchTags()
         this.fetchProducts()
         this.fetchLastBuys()
+        this.fetchOnline()
     }
 
     getTotalBasket() {
@@ -89,6 +91,10 @@ class Store {
         this.activeMode = id
     }
 
+    setOnline(data) {
+        this.online = data
+    }
+
     setPromo(data) {
         this.promo = data
     }
@@ -150,6 +156,12 @@ class Store {
     fetchTags() {
         $api.get('tags').then(rs => {
             this.setTags(rs.data)
+        })
+    }
+
+    fetchOnline() {
+        $api.get('history').then(rs => {
+            this.setOnline(rs.data)
         })
     }
 

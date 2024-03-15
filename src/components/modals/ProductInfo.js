@@ -42,11 +42,17 @@ const ProductInfo = ({product, tags}) => {
                                             <button onClick={() => store.removeFromBasket(product.id)} className="btn-del _icon-del"
                                                     type="button"></button>
                                         </div>
-                                    ) : (
-                                        <button className="btn-buy btn-buy_common _icon-ar-down" type="button" onClick={() => {store.addToBasket(product.id);store.hideModal('productInfo', product.id)}}>
-                                            В корзину
-                                        </button>
-                                    )}
+                                    ) :
+                                        <button
+                                            className="btn-buy btn-buy_common _icon-ar-down"
+                                            type="button"
+                                            onClick={
+                                            product.Tag.isPrivilege ?
+                                                () => {store.hideModal('productChoice', product.id);store.hideModal('productInfo', product.id)} :
+                                                () => {store.addToBasket(product.id);store.hideModal('productInfo', product.id)}
+                                            }
+                                        >В корзину</button>
+                                    }
                                 </div>
                             </div>
                         </div>

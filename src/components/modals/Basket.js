@@ -52,7 +52,7 @@ const Basket = () => {
     }, [promo]);
 
     useEffect(() => {
-        store.checkPromo(debouncedPromo)
+        debouncedPromo.trim() !== "" && store.checkPromo(debouncedPromo)
     }, [debouncedPromo]);
 
     const handlePay = () => {
