@@ -48,7 +48,7 @@ const ProductInfo = ({product, tags}) => {
                                             type="button"
                                             onClick={
                                             product.Tag.isPrivilege ?
-                                                () => {store.hideModal('productChoice', product.id);store.hideModal('productInfo', product.id)} :
+                                                () => {store.hideModal('productInfo', product.id);store.showModal('productChoice', product.id)} :
                                                 () => {store.addToBasket(product.id);store.hideModal('productInfo', product.id)}
                                             }
                                         >В корзину</button>

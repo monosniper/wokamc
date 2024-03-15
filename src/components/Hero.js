@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
 import {Discord} from "react-discord-widget";
+import {Context} from "../index";
+import {observer} from "mobx-react-lite";
 
 // const IP = "play.hightcore.org"
 const IP = "mc.woka.fun"
 
 const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_styles}) => {
+     const {store} = useContext(Context);
     const [copied, setCopied] = useState(false)
 
     const handleClick = () => {
@@ -44,7 +47,7 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
                                     <img src="img/online-indicator-success.svg" alt="Image"/>
                                 </div>
                                 <div className="online__num">
-                                    2 из 2023
+                                    {store.getTotalOnline()} из 240
                                 </div>
                             </div>
                         </div>
@@ -113,4 +116,4 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
     );
 };
 
-export default Hero;
+export default observer(Hero);

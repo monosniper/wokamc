@@ -141,6 +141,13 @@ class Store {
         })
     }
 
+    getTotalOnline() {
+        const s1 = this.online['ANARCHY-M']
+        const s2 = this.online['GRIEF-M']
+
+        return (s1.length && s2.length) ? s1[s1.length-1]+s2[s2.length-1] : 0
+    }
+
     setTags(tags) {
         this.tags = tags
     }
