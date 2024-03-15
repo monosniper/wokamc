@@ -24,7 +24,7 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
             <div className="hero__overlay"></div>
             <div className="hero__container" style={container_styles}>
                 <div className="hero__content">
-                    <h1 className="hero__title"><span>{title}</span>{title_2}</h1>
+                    <h1 className="hero__title"><span></span>{title_2}</h1>
                     <div className="hero__text">{text}</div>
                     <div className="hero__block">
                         <div className="hero__btn-wrapper">

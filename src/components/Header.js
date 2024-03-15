@@ -17,7 +17,7 @@ const Header = () => {
             <div className="header__container">
                 <Link unstable_viewTransition to="/" className="header__logo logo">
                     <img src="img/logo.png" alt="Logo"/>
-                    <span>woka</span>
+                    <span>wokamc</span>
                 </Link>
                 <div className="header__menu menu">
                     <nav className="menu__body">

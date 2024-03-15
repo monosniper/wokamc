@@ -16,7 +16,7 @@ const Footer = () => {
                                         <path d="M1 4.99995L5.00001 8.99995L13 1" stroke="#2a354f" strokeWidth="2"></path>
                                     </svg>
                                     <span> © 2024 </span>
-                                    <strong>Woka</strong>
+                                    <strong>WokaMC</strong>
                                 </p>
                                 <small>Все права защищены.</small>
                             </div>
@@ -35,7 +35,7 @@ const Footer = () => {
                             Коммерческая деятельность проекта
                             соответствует <a href="mojang.pdf" target={"_blank"}>политике Mojang AB</a>.
                         </p>
-                        <Link to="/policy" className={'links-footer__link'}>Договор Оферты</Link>
+                        <Link unstable_viewTransition to="/policy" className={'links-footer__link'}>Договор Оферты</Link>
                     </div>
                     <div className="footer__links links-footer">
                         <div className="links-footer__title">
@@ -48,7 +48,7 @@ const Footer = () => {
                             <li><a href="https://vk.com/topic-214173785_48914833" className="links-footer__link">
                                 Правила
                             </a></li>
-                            <li><Link to="/punishments" className="links-footer__link">
+                            <li><Link unstable_viewTransition to="/punishments" className="links-footer__link">
                                 Наказания
                             </Link></li>
                         </ul>

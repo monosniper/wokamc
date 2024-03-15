@@ -140,8 +140,8 @@ const Basket = () => {
                                             <label onClick={() => setChecked(!checked)} htmlFor="c_" className="checkbox__label">
                                                 <span
                                                     className="checkbox__text">
-                                                    Я принимаю условия <Link to={"/policy"}>пользовательского соглашения</Link> и <Link
-                                                    to="/policy">оказания услуг</Link>
+                                                    Я принимаю условия <Link unstable_viewTransition to={"/policy"}>пользовательского соглашения</Link> и <Link
+                                                    unstable_viewTransition to="/policy">оказания услуг</Link>
                                                 </span>
                                             </label>
                                         </div>
