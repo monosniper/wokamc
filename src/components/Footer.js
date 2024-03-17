@@ -47,7 +47,7 @@ const Footer = () => {
                             </a></li>
                             <li><Link to={'/rules'}
                                       unstable_viewTransition className="links-footer__link">
-                                Правила
+                                Правила сервера
                             </Link></li>
                             <li><Link unstable_viewTransition to="/punishments" className="links-footer__link">
                                 Наказания

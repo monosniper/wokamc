@@ -22,11 +22,11 @@ const Header = () => {
                 <div className="header__menu menu">
                     <nav className="menu__body">
                         <ul className="menu__list">
-                            <li className="menu__item"><a target={'_blank'} href="https://llaun.ch/ru"
-                                                          className="menu__link">Скачать Minecraft</a></li>
+                            {/*<li className="menu__item"><a target={'_blank'} href="https://llaun.ch/ru"*/}
+                            {/*                              className="menu__link">Скачать Minecraft</a></li>*/}
                             <li className="menu__item"><Link to={'/rules'}
                                                              unstable_viewTransition
-                                                          className="menu__link">Правила</Link></li>
+                                                          className="menu__link">Правила сервера</Link></li>
 							<li className="menu__item"><Link to="/punishments"
 														  className="menu__link" unstable_viewTransition>Наказания</Link></li>
                         </ul>
