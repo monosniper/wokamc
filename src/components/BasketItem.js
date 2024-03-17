@@ -11,7 +11,8 @@ const expires = {
 
 const BasketItem = ({item}) => {
     const {store} = useContext(Context);
-    const product = store.products.find(product => product.id === item.id)
+
+    const product = store.products.find(({id, title}) => item.id === 'money' ? title === 'money' : id === item.id)
 
     return (
         <div className="cart-product">
@@ -20,7 +21,7 @@ const BasketItem = ({item}) => {
             </div>
             <div className="cart-product__info">
                 <div className="cart-product__clm">
-                    <div className="cart-product__title">{product.title}</div>
+                    <div className="cart-product__title">{item.id === 'money' ? 'Игровая валюта €' : product.title}</div>
                     <div className="cart-product__label">
                         <svg width="20" height="20" viewBox="0 0 20 20"
                              fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,16 +32,16 @@ const BasketItem = ({item}) => {
                     {item.expiry ? <div className="cart-product__expiry">{expires[item.expiry]}</div> : null}
                 </div>
                 <div className="cart-product__clm">
-                    <div className="cart-product__price">{item.count * product.price}.00 ₽</div>
+                    <div className="cart-product__price">{item.id === 'money' ? item.amount : item.count * product.price}.00 ₽</div>
                     <div className="quantity" data-quantity="">
-                        <button onClick={() => store.removeFromBasket(product.id)} type="button"
+                        <button onClick={() => store.removeFromBasket(item.id)} type="button"
                                 className="quantity__button quantity__button_minus btn-del _icon-del"></button>
 
                         <div className="quantity__input"><input
                             autoComplete="off" type="text"
                             name="form[]" value={item.count}/></div>
-                        {store.tags.find(tag => tag.id === product.TagId).isPrivilege ? null : (
-                            <button data-quantity-plus type="button" onClick={() => store.addCountToBasket(product.id)}
+                        {store.tags.find(tag => tag.id === product.TagId).isPrivilege || item.id === 'money' || product.Tag.isAlone ? null : (
+                            <button data-quantity-plus type="button" onClick={() => store.addCountToBasket(item.id)}
                                     className="quantity__button quantity__button_plus"></button>
                         )}
                     </div>

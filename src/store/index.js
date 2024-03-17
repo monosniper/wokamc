@@ -34,10 +34,13 @@ class Store {
             forever: 'price',
         }
 
-        let total = this.basket.map(({id, expiry, count}) => {
-            const product = this.products.find(product => product.id === id)
-            const price = expiry ? product[prices[expiry]] : product.price
-            return price * count
+        let total = this.basket.map(({id, expiry, count, amount}) => {
+            if(id === 'money') return amount
+            else {
+                const product = this.products.find(product => product.id === id)
+                const price = expiry ? product[prices[expiry]] : product.price
+                return price * count
+            }
         }).reduce((a, b) => a + b, 0)
 
         if(this.promo) {

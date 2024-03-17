@@ -39,6 +39,7 @@ const CoinSlider = () => {
                         xmax={5000}
                         xmin={10}
                         xstep={5}
+                        disabled={store.basket.find(({id}) => id === 'money')}
                         onChange={({ x }) => setAmount(x)}
                         styles={{
                             track: {
