@@ -27,6 +27,7 @@ const LastBuys = () => {
                     responsive={responsive}
                     className="last-buy__items"
                     showArrows={false}
+                    DotsWrapper={()=>{}}
                     padding={'1px'}
                 >
                     {store.last_buys.map(buy => buy.Products.filter(({mode}) => mode === store.activeMode).map(product => (

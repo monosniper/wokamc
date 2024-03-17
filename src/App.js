@@ -7,6 +7,7 @@ import {
 import Home from "./pages/home";
 import Punishments from "./pages/punishments";
 import Policy from "./pages/policy";
+import Rules from "./pages/rules";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: "/policy",
         element: <Policy/>,
+    },
+    {
+        path: "/rules",
+        element: <Rules/>,
     },
 ]);
 

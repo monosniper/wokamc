@@ -72,7 +72,15 @@ const Basket = () => {
     }
 
     return (
-        <Modal ariaHideApp={false} closeTimeoutMS={500} className={'modal'} isOpen={store.modals.basket}>
+        <Modal
+            ariaHideApp={false}
+            closeTimeoutMS={500}
+            className={'modal'}
+            isOpen={store.modals.basket}
+            shouldCloseOnOverlayClick={true}
+            onRequestClose={() => store.hideModal('basket')}
+            overlayRef={() => document.querySelector('.overlay')}
+        >
             <div className="popup__content">
                 {isShowError ? <div className="error-noty">
                     <div className="text">{errorText}</div></div>

@@ -60,9 +60,6 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
                             width={300}
                             height={400}
                             theme="dark"
-                            showMembers={true}
-                            showOnline={true}
-                            showJoinButton={true}
                         />
                     </div>
                     {/*<div className="hero-list">*/}

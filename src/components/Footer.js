@@ -45,9 +45,10 @@ const Footer = () => {
                             <li><a href="https://llaun.ch/ru" className="links-footer__link">
                                 Скачать Minecraft
                             </a></li>
-                            <li><a href="https://vk.com/topic-214173785_48914833" className="links-footer__link">
+                            <li><Link to={'/rules'}
+                                      unstable_viewTransition className="links-footer__link">
                                 Правила
-                            </a></li>
+                            </Link></li>
                             <li><Link unstable_viewTransition to="/punishments" className="links-footer__link">
                                 Наказания
                             </Link></li>

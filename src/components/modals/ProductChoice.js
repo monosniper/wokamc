@@ -7,7 +7,13 @@ const ProductChoice = ({product}) => {
     const {store} = useContext(Context);
 
     return (
-        <Modal ariaHideApp={false} closeTimeoutMS={500} className={'modal popup_small'} isOpen={store.modals.productChoice[product.id]}>
+        <Modal
+            ariaHideApp={false}
+            closeTimeoutMS={500}
+            className={'modal popup_small'}
+            isOpen={store.modals.productChoice[product.id]}
+            shouldCloseOnOverlayClick={true}
+        >
             <div className="popup__content">
                 <button onClick={() => store.hideModal('productChoice', product.id)} type="button" className="popup__close _icon-close"></button>
                 <div className="choose">

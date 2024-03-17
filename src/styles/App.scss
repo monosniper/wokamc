@@ -28,9 +28,9 @@ html {
 }
 
 *::-webkit-scrollbar {
-    width: 5px;
-    background: transparent;
+    width: 10px;
     border-radius: 5px;
+    display: none;
 }
 
 *:hover::-webkit-scrollbar-thumb {
@@ -40,6 +40,10 @@ html {
 *::-webkit-scrollbar-thumb {
     background-color: #656565;
     border-radius: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .overlay {
@@ -809,11 +813,18 @@ body::after {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 30%;
     flex: 0 0 30%;
-    padding-bottom: 19%;
+    padding-bottom: 0 !important;
+    display: flex;
+    justify-content: center;
 
     .product__discount {
         top: 0 !important;
         right: -10px !important;
+    }
+
+    img {
+        width: auto !important;
+        position: relative !important;
     }
 }
 
@@ -1280,6 +1291,11 @@ body::after {
     z-index: 1;
 }
 
+.discord {
+    width: 500px;
+    max-width: 100% ;
+}
+
 .discord .header {
     position: relative !important;
     height: 50px !important;
@@ -1706,6 +1722,11 @@ select, option {
     padding: 40px;
     max-width: 100%;
 
+    a {
+        text-decoration: underline;
+        color: #6c75d7;
+    }
+
     h4 {
         font-weight: bold;
         text-align: center;
@@ -1715,7 +1736,7 @@ select, option {
 
     h6 {
         padding-top: .5rem;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: bold;
         margin-bottom: 1rem;
     }
@@ -1743,6 +1764,27 @@ select, option {
         flex-direction: column;
         align-items: center;
     }
+
+    .coin-slider {
+        &__wrapper {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        &__btn {
+            padding: 15px 40px;
+            font-size: 16px !important;
+        }
+
+        &__img {
+            display: none;
+        }
+
+        &__body {
+            width: 100%;
+            padding: 0 20px !important;
+        }
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1761,6 +1803,12 @@ select, option {
         p {
             font-size: 12px;
         }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .footer__center {
+        flex: auto;
     }
 }
 
@@ -1943,6 +1991,98 @@ select, option {
 
 .product__action._hidden {
     display: none;
+}
+
+.coin-slider {
+    padding-bottom: 6.25rem;
+
+    &__wrapper {
+        border-radius: 20px;
+        background: #fff;
+        border: 2px solid #E9E9E9;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__img {
+        flex: 0 0 20%;
+        padding: 20px;
+    }
+
+    &__body {
+        flex: 0 0 60%;
+        padding: 0 40px;
+    }
+
+    &__btn {
+        flex: 0 0 20%;
+        border-radius: 15px;
+        background: #3dd17e;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        height: 50px;
+        cursor: pointer;
+        transition: .1s ease-in-out;
+
+        &:hover {
+            opacity: .9;
+            transform: scale(1.05);
+        }
+    }
+
+    &__title {
+        margin-bottom: 2rem;
+        font-size: 24px;
+        font-weight: bold;
+        color: #2a354f;
+    }
+
+    .result-box {
+        display: flex;
+        border-radius: 15px;
+        margin-top: 2rem;
+        position: relative;
+
+        &__item {
+            border: 1px solid #ebebeb;
+            padding: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: #394b77;
+        }
+
+        &__left {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-right: none;
+        }
+
+        &__sep {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+
+            img {
+                background: white;
+                width: 20px;
+                height: 36px;
+            }
+        }
+
+        &__right {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+    }
 }
 
 .servers {
@@ -3619,30 +3759,35 @@ select, option {
 
 .pagination {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
     margin-top: 1rem;
-    
-    li {
-        background: $contrast;
-        border-radius: 10px;
-        width: 30px;
-        height: 30px;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 14px;
-        cursor: pointer;
 
-        &.selected {
+    li {
+        &.selected a {
             //background: #29c972 !important;
             background: #121c33 !important;
             font-weight: bold;
         }
 
-        &:hover {
-            opacity: .8;
+        a {
+            background: $contrast;
+            border-radius: 10px;
+            width: 30px;
+            height: 30px;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+
+
+
+            &:hover {
+                opacity: .8;
+            }
         }
     }
 }

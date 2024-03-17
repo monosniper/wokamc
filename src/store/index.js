@@ -108,19 +108,31 @@ class Store {
     }
 
     checkPromo(promo) {
-        $api.post('check-promo', {promo}).then(({ data }) => {
-            if(data.success) {
-                this.setPromo(data.data)
-            }
-        })
+        try {
+            $api.post('check-promo', {promo}).then(({ data }) => {
+                if(data.success) {
+                    this.setPromo(data.data)
+                }
+            }).catch((e) => {
+                console.log('Cant connect server')
+            })
+        } catch (e) {
+            console.log('Cant connect server')
+        }
     }
 
     pay(data) {
-        $api.post('pay', {
-            ...data, amount: this.getTotalBasket(), products: this.basket
-        }).then(({ data }) => {
-            window.location.href = data.url
-        })
+        try {
+            $api.post('pay', {
+                ...data, amount: this.getTotalBasket(), products: this.basket
+            }).then(({ data }) => {
+                window.location.href = data.url
+            }).catch((e) => {
+                console.log('Cant connect server')
+            })
+        } catch (e) {
+            console.log('Cant connect server')
+        }
     }
 
     setQuery(data) {
@@ -161,49 +173,79 @@ class Store {
     }
 
     fetchTags() {
-        $api.get('tags').then(rs => {
-            this.setTags(rs.data)
-        })
+        try {
+            $api.get('tags').then(rs => {
+                this.setTags(rs.data)
+            }).catch((e) => {
+                console.log('Cant connect server')
+            })
+        } catch (e) {
+            console.log('Cant connect server')
+        }
     }
 
     fetchOnline() {
-        $api.get('history').then(rs => {
-            const online = this.online
+        try {
+            $api.get('history').then(rs => {
+                const online = this.online
 
-            rs.data.forEach(({data}) => {
-                online['ANARCHY-M'] = data['ANARCHY-M']
-                online['GRIEF-M'] = data['GRIEF-M']
+                rs.data.forEach(({data}) => {
+                    online['ANARCHY-M'] = data['ANARCHY-M']
+                    online['GRIEF-M'] = data['GRIEF-M']
+                })
+
+                this.setOnline(online)
+            }).catch((e) => {
+                console.log('Cant connect server')
             })
-
-            this.setOnline(online)
-        })
+        } catch (e) {
+            console.log('Cant connect server')
+        }
     }
 
     fetchProducts() {
-        $api.get('products').then(rs => {
-            this.setProducts(rs.data.map(product => {
-                product.hide = false
-                return product
-            }))
-            const modals = []
+        try {
+            $api.get('products').then(rs => {
+                this.setProducts(rs.data.map(product => {
+                    product.hide = false
+                    return product
+                }))
+                const modals = []
 
-            rs.data.forEach(({id}) => {
-                modals[id] = false
+                rs.data.forEach(({id}) => {
+                    modals[id] = false
+                })
+
+                this.modals.productInfo = modals
+                this.modals.productChoice = modals
+            }).catch((e) => {
+                console.log('Cant connect server')
             })
-
-            this.modals.productInfo = modals
-            this.modals.productChoice = modals
-        })
+        } catch (e) {
+            console.log('Cant connect server')
+        }
     }
 
     fetchLastBuys() {
-        $api.get('buys?limit=10&sort=["createdAt","DESC"]').then(rs => {
-            this.setLastBuys(rs.data)
-        })
+        try {
+            $api.get('buys?limit=10&sort=["createdAt","DESC"]').then(rs => {
+                this.setLastBuys(rs.data)
+            }).catch((e) => {
+                console.log('Cant connect server')
+            })
+        } catch (e) {
+            console.log('Cant connect server')
+        }
     }
 
     fetchPunishments() {
-        return $api.get('punishments')
+        try {
+            return $api.get('punishments').catch((e) => {
+                console.log('Cant connect server')
+            })
+        } catch (e) {
+            console.log('Cant connect server')
+        }
     }
 
     filteredProducts = () => {
