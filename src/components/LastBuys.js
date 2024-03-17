@@ -33,8 +33,8 @@ const LastBuys = () => {
                     {store.last_buys.map(buy => buy.Products.filter(({mode}) => mode === store.activeMode).map(product => (
                         <div key={'buy-'+buy.id+'-'+product.id} onClick={() => store.showModal("productInfo", product.id)} className="buy-item" data-popup="#info">
                             <div className="buy-item__label">
-                                {/*{moment(buy.createdAt).subtract(1, 'm').lang("ru").fromNow()}*/}
-                                {moment(buy.createdAt).lang("ru").fromNow()}
+                                {moment(buy.created_at).subtract(1, 'm').lang("ru").fromNow()}
+                                {/*{moment(buy.created_at).lang("ru").fromNow()}*/}
                             </div>
                             <div className="buy-item__img -ibg">
                                 <img src={API_URL + product.image} alt={product.title}/>

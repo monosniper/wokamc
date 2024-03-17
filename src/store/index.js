@@ -41,7 +41,7 @@ class Store {
         }).reduce((a, b) => a + b, 0)
 
         if(this.promo) {
-            total -= (total / 100) * this.promo.amount
+            total -= ((total / 100) * this.promo.amount).toFixed(0)
         }
 
         return total
@@ -67,9 +67,9 @@ class Store {
         document.body.style.overflow = 'unset';
     }
 
-    addToBasket(id, expiry) {
+    addToBasket(id, expiry, count=1, amount) {
         this.basket.find((item) => item.id === id) && this.removeFromBasket(id)
-        this.basket.push({id, count: 1, expiry})
+        this.basket.push({id, count, expiry, amount})
     }
 
     addCountToBasket(id) {
@@ -112,6 +112,8 @@ class Store {
             $api.post('check-promo', {promo}).then(({ data }) => {
                 if(data.success) {
                     this.setPromo(data.data)
+                } else {
+                    this.setPromo(null)
                 }
             }).catch((e) => {
                 console.log('Cant connect server')

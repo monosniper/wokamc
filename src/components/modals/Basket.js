@@ -140,7 +140,7 @@ const Basket = () => {
                                         <input value={promo} onChange={(e) => setPromo(e.target.value)} className="form__input input" autoComplete="off" type="text"
                                                placeholder="XXXXX"/>
                                     </div>
-                                    {store.promo && promo === store.promo.name ? <div className="promo-text">{promo} -{store.promo.amount}%</div> : null}
+                                    {store.promo ? <div className="promo-text">{store.promo.name} -{store.promo.amount}%</div> : null}
                                     <div className="form__column">
                                         <div className="checkbox">
                                             <input id="c_" data-error="Ошибка" className="checkbox__input"

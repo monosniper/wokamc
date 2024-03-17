@@ -199,7 +199,7 @@ const Servers = () => {
                 <div className="servers__items">
                     <div className="server">
                         <div className="server__header">
-                            <div className="server__title">GRIEF-M 💫</div>
+                            <div className="server__title">GRIEF-M 🧨</div>
                             <div className="server__label">
                                 1.16.5 - 1.20.4
                             </div>
@@ -235,7 +235,7 @@ const Servers = () => {
                     </div>
                     <div className="server">
                         <div className="server__header">
-                            <div className="server__title">ANARCHY-M 🌿</div>
+                            <div className="server__title">ANARCHY-M 🔥</div>
                             <div className="server__label">
                                 1.16.5 - 1.20.4
                             </div>
