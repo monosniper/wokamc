@@ -29,7 +29,10 @@ const Products = () => {
         ,
     }
 
-    const modes = ['ANARCHY-M', "GRIEF-M"]
+    const modes = [
+        // 'ANARCHY-M',
+        "GRIEF-M"
+    ]
 
     return (
         <section id="products" className="products">

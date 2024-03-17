@@ -6,12 +6,14 @@ class Store {
     products = []
     last_buys = []
     activeTag = undefined
-    activeMode = 'ANARCHY-M'
+    // activeMode = 'ANARCHY-M'
+    activeMode = 'GRIEF-M'
     basket = []
     query = ""
     isModalOpen = false
     promo = false
-    online = {'ANARCHY-M': [], 'GRIEF-M': []}
+    // online = {'ANARCHY-M': [], 'GRIEF-M': []}
+    online = []
     modals = {
         basket: false,
         productInfo: [],
@@ -159,10 +161,13 @@ class Store {
     }
 
     getTotalOnline() {
-        const s1 = this.online['ANARCHY-M']
-        const s2 = this.online['GRIEF-M']
+        // const s1 = this.online['ANARCHY-M']
+        // const s2 = this.online['GRIEF-M']
+        //
+        // return (s1.length && s2.length) ? s1[s1.length-1]+s2[s2.length-1] : 0
 
-        return (s1.length && s2.length) ? s1[s1.length-1]+s2[s2.length-1] : 0
+        // return this.online.length ? this.online[this.online.length-1] : 0
+        return 0
     }
 
     setTags(tags) {
@@ -191,15 +196,15 @@ class Store {
 
     fetchOnline() {
         try {
-            $api.get('history').then(rs => {
-                const online = this.online
-
-                rs.data.forEach(({data}) => {
-                    online['ANARCHY-M'] = data['ANARCHY-M']
-                    online['GRIEF-M'] = data['GRIEF-M']
-                })
-
-                this.setOnline(online)
+            $api.get('history?limit=14').then(rs => {
+                // const online = this.online
+                // console.log(rs.data)
+                // rs.data.forEach(({data}) => {
+                //     online['ANARCHY-M'] = data['ANARCHY-M']
+                //     online['GRIEF-M'] = data['GRIEF-M']
+                // })
+                console.log(rs.data)
+                this.setOnline(rs.data)
             }).catch((e) => {
                 console.log('Cant connect server')
             })

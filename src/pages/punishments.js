@@ -12,7 +12,10 @@ const Punishments = () => {
         {label: 'Муты', id: 'mutes', count: 0},
         {label: 'Кики', id: 'kicks', count: 0},
     ])
-    const modes = ['ANARCHY-M', "GRIEF-M"]
+    const modes = [
+        // 'ANARCHY-M',
+        "GRIEF-M"
+    ]
 
     const [activeType, setActiveType] = useState('bans')
     const [activeMode, setActiveMode] = useState('ANARCHY-M')
