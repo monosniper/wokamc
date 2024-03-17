@@ -1996,6 +1996,18 @@ select, option {
 .coin-slider {
     padding-bottom: 6.25rem;
 
+    .btn-buy {
+        width: 100% !important;
+        height: 50px !important;
+        background-color: #3dd17e !important;
+        font-size: 18px !important;
+        font-weight: bold !important;
+    }
+
+    .product__action {
+        width: 100%;
+    }
+
     &__wrapper {
         border-radius: 20px;
         background: #fff;
