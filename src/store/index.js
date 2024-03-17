@@ -166,8 +166,7 @@ class Store {
         //
         // return (s1.length && s2.length) ? s1[s1.length-1]+s2[s2.length-1] : 0
 
-        // return this.online.length ? this.online[this.online.length-1] : 0
-        return 0
+        return this.online.length ? this.online[this.online.length-1].online : 0
     }
 
     setTags(tags) {
