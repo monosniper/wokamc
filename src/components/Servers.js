@@ -168,6 +168,8 @@ const Servers = () => {
                 .attr("fill", "#2e4477") // Цвет точки
                 .style("fill-opacity", 0);
 
+            // const _min = maxValue - minValue >= 10 ? minValue : (minValue-1 - (maxValue - minValue))
+
             const leftScale = d3.scaleLinear()
                 .domain([minValue, maxValue])
                 .range([height, 0]);
@@ -183,8 +185,6 @@ const Servers = () => {
             const scale = d3.scaleUtc()
                 .domain([new Date(data[0].createdAt), new Date(data[data.length-1].createdAt)])
                 .range([0, width]);
-
-            scale.ticks(d3.utcMinute.every(2))
 
             const x_axis = d3.axisBottom()
                 .scale(scale).ticks(d3.utcMinute.every(2));

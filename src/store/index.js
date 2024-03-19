@@ -52,6 +52,17 @@ class Store {
         return total
     }
 
+    getItemPrice(item, product) {
+        const prices = {
+            1: 'price_1',
+            3: 'price_3',
+            forever: 'price',
+        }
+
+        const price = item.expiry ? product[prices[item.expiry]] : product.price
+        return price * item.count
+    }
+
     showModal(name, id= null) {
         this.isModalOpen = true
         if(id !== null) {
@@ -131,9 +142,13 @@ class Store {
 
     pay(data) {
         try {
-            $api.post('pay', {
+            const _data = {
                 ...data, amount: this.getTotalBasket(), products: this.basket
-            }).then(({ data }) => {
+            }
+
+            if(this.promo) _data.promo = this.promo.name
+
+            $api.post('pay', _data).then(({ data }) => {
                 window.location.href = data.url
             }).catch((e) => {
                 console.log('Cant connect server')

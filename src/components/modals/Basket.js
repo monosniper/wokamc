@@ -63,7 +63,7 @@ const Basket = () => {
                 if(store.basket.length)
                     if(!black_list.includes(name.trim())) {
                         store.pay({
-                            name: name.trim(), email: email.trim(), promo
+                            name: name.trim(), email: email.trim()
                         })
                     } else showError('Недопустимый никнейм!')
                 else showError('Ваша корзина пуста!')
