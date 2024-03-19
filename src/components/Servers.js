@@ -173,7 +173,7 @@ const Servers = () => {
                 .range([height, 0]);
 
             const y_axis = d3.axisLeft()
-                .scale(leftScale);
+                .scale(leftScale).tickFormat(d3.format('d'));
 
             svg.append("g")
                 .attr("transform", "translate(-5, 0)")
@@ -187,7 +187,7 @@ const Servers = () => {
             scale.ticks(d3.utcMinute.every(2))
 
             const x_axis = d3.axisBottom()
-                .scale(scale);
+                .scale(scale).ticks(d3.utcMinute.every(2));
 
             svg.append("g")
                 .attr("transform", "translate(0, "+(height+5)+")")

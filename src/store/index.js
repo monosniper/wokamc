@@ -196,7 +196,7 @@ class Store {
 
     fetchOnline() {
         try {
-            $api.get('history?limit=14').then(rs => {
+            $api.get('history?limit=25').then(rs => {
                 // const online = this.online
                 // console.log(rs.data)
                 // rs.data.forEach(({data}) => {
