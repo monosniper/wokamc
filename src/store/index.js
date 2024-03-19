@@ -105,9 +105,10 @@ class Store {
     }
 
     filteredProduct() {
-        return this.products.filter(({TagId, title, mode}) =>
+        return this.products.filter(({TagId, title, mode, Tag}) =>
             (this.activeTag !== undefined ? (TagId === this.activeTag) : true) &&
             this.activeMode === mode &&
+            !Tag.isHidden &&
             title.toLowerCase().search(this.query.toLowerCase()) !== -1
         )
     }

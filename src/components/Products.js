@@ -88,7 +88,7 @@ const Products = () => {
                             </svg>
                             <span>Все товары</span>
                         </button>
-                        {store.tags.map(tag => (
+                        {store.tags.filter(({isHidden}) => !isHidden).map(tag => (
                             <button key={"tag-"+tag.id} onClick={() => store.setActiveTag(tag.id)} type="button"
                                     className={"tabs__title" + (store.activeTag === tag.id ? ' _tab-active' : '')}>
                                 {tagIcons[tag.name]}
