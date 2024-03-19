@@ -25,8 +25,8 @@ const Socials = () => {
                                 </svg>
                             </div>
                             <div className="socials-item__title">
-                                <span>Поддержка</span>
-                                {/*<span>Telegram</span>*/}
+                                <span>Мы в</span>
+                                <span>Telegram</span>
                             </div>
                         </div>
                         <i className="_icon-arrow"></i>
