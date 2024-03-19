@@ -32,7 +32,7 @@ const BasketItem = ({item}) => {
                     {item.expiry ? <div className="cart-product__expiry">{expires[item.expiry]}</div> : null}
                 </div>
                 <div className="cart-product__clm">
-                    <div className="cart-product__price">{item.id === 'money' ? item.amount : store.getItemPrice(item)}.00 ₽</div>
+                    <div className="cart-product__price">{item.id === 'money' ? item.amount : store.getItemPrice(item, product)}.00 ₽</div>
                     <div className="quantity" data-quantity="">
                         <button onClick={() => store.removeFromBasket(item.id)} type="button"
                                 className="quantity__button quantity__button_minus btn-del _icon-del"></button>
