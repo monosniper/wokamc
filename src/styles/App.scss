@@ -1200,6 +1200,10 @@ body::after {
     background-image: url("../img/icons/document.png");
 }
 
+.tg {
+    background: linear-gradient(90deg, #2aabee 0%, #229ed9 100%) !important;
+}
+
 .menu__item:last-child .menu__link:before {
     background-image: url("../img/icons/banned.png");
 }

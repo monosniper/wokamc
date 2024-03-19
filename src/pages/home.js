@@ -2,7 +2,7 @@ import React from 'react';
 import Hero from "../components/Hero";
 import Products from "../components/Products";
 import Servers from "../components/Servers";
-// import Socials from "../components/Socials";
+import Socials from "../components/Socials";
 import LastBuys from "../components/LastBuys";
 import Layout from "../layouts/main";
 import CoinSlider from "../components/CoinSlider";
@@ -23,7 +23,7 @@ const Home = () => {
 			<Products />
 			<CoinSlider />
 			<Servers />
-			{/*<Socials />*/}
+			<Socials />
 			<LastBuys />
 		</Layout>
     );
