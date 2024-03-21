@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import * as d3 from "d3";
 import {observer} from "mobx-react-lite";
 import {useStores} from "../root-store-context";
+import moment from "moment";
 
 const IP = "mc.woka.fun"
 
@@ -183,7 +184,9 @@ const Servers = () => {
                 .range([0, width]);
 
             const x_axis = d3.axisBottom()
-                .scale(scale).ticks(d3.utcMinute.every(2));
+                .scale(scale).ticks(d3.utcMinute.every(2)).tickFormat(function (hour) {
+                    return moment(hour).format('H:mm');
+                });
 
             svg.append("g")
                 .attr("transform", "translate(0, "+(height+5)+")")

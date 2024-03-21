@@ -932,8 +932,15 @@ body::after {
     color: #fff;
 }
 
-.tabs__title._tab-active svg path {
-    stroke: #fff;
+.tabs__title._tab-active svg {
+    &.cases {
+        fill: white;
+    }
+
+    path {
+        stroke: #fff;
+    }
+
 }
 
 [class*=-ibg] {
@@ -2011,7 +2018,7 @@ select, option {
     .btn-buy {
         width: 100% !important;
         height: 50px !important;
-        background-color: #3dd17e !important;
+        background-color: #2A354F !important;
         font-size: 18px !important;
         font-weight: bold !important;
     }
@@ -2042,13 +2049,17 @@ select, option {
     &__btn {
         flex: 0 0 20%;
         border-radius: 15px;
-        background: #3dd17e;
+        background: #2A354F;
         color: white;
         font-size: 18px;
-        font-weight: bold;
+        //font-weight: bold;
         height: 50px;
         cursor: pointer;
         transition: .1s ease-in-out;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        justify-content: center;
 
         &:hover {
             opacity: .9;
@@ -3679,8 +3690,14 @@ select, option {
         color: white;
     }
 
-    .tabs__title:hover svg path {
-        stroke: white;
+    .tabs__title:hover svg {
+        &.cases {
+            fill: white;
+        }
+
+        path {
+            stroke: white;
+        }
     }
 
     .btn-buy:hover {

@@ -5,9 +5,9 @@ import {useStores} from "../root-store-context";
 
 const CoinSlider = () => {
     const { basket: { items, add, remove } } = useStores()
-    const [amount, setAmount] = useState(200)
-    const [count, setCount] = useState(250)
-    const min = 200
+    const [amount, setAmount] = useState(10)
+    const [count, setCount] = useState(13)
+    const min = 10
     const max = 5000
 
     useEffect(() => {
@@ -43,14 +43,14 @@ const CoinSlider = () => {
                                 cursor: "pointer",
                             },
                             active: {
-                                backgroundColor: '#3dd17e',
+                                backgroundColor: '#2a354f',
                                 cursor: "pointer",
                             },
                             thumb: {
                                 width: 40,
                                 height: 40,
-                                boxShadow: "0 0 20px 1px #3dd17e",
-                                backgroundImage: "url('/img/slider-handler.png')",
+                                boxShadow: "0 0 20px 1px #2a354f",
+                                backgroundImage: "url('/img/slider-handler.jpg')",
                                 backgroundPosition: "center",
                                 backgroundSize: "contain",
                             },
@@ -76,7 +76,7 @@ const CoinSlider = () => {
                                     type="button"></button>
                         </div>
                     ) :
-                    <button onClick={() => add('money', null, count, amount)} className="coin-slider__btn">В Корзину</button>
+                    <button onClick={() => add('money', null, count, amount)} className="_icon-cart coin-slider__btn">В Корзину</button>
                 }
             </div>
         </div>

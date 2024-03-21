@@ -37,7 +37,7 @@ const Products = () => {
         //     <path d="M9.58334 10L16.6667 2.91669" stroke="white" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round"/>
         //     <path d="M12.6271 7.04169L14.8892 9.29169L17.5279 6.66669L15.2663 4.41669L12.6271 7.04169V7.04169Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
         // </svg>,
-        'Тайники': <svg width="20" height="20" fill="#2a354f" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+        'Тайники': <svg className={'cases'} width="20" height="20" fill="#2a354f" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 512 512">
             <g>
                 <g>
