@@ -40,7 +40,7 @@ const Products = () => {
     }
 
     const modes = [
-        // 'ANARCHY-M',
+        'ANARCHY-M',
         "GRIEF-M"
     ]
 

@@ -5,8 +5,10 @@ import {useStores} from "../root-store-context";
 
 const CoinSlider = () => {
     const { basket: { items, add, remove } } = useStores()
-    const [amount, setAmount] = useState(100)
-    const [count, setCount] = useState(125)
+    const [amount, setAmount] = useState(200)
+    const [count, setCount] = useState(250)
+    const min = 200
+    const max = 5000
 
     useEffect(() => {
         if(amount <= 500) {
@@ -29,8 +31,8 @@ const CoinSlider = () => {
                     <Slider
                         axis="x"
                         x={amount}
-                        xmax={5000}
-                        xmin={10}
+                        xmax={max}
+                        xmin={min}
                         xstep={5}
                         disabled={items.find(({id}) => id === 'money')}
                         onChange={({ x }) => setAmount(x)}
