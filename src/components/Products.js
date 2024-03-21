@@ -38,8 +38,7 @@ const Products = () => {
         //     <path d="M12.6271 7.04169L14.8892 9.29169L17.5279 6.66669L15.2663 4.41669L12.6271 7.04169V7.04169Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
         // </svg>,
         'Тайники': <svg width="20" height="20" fill="#2a354f" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-             xmlns:xlink="http://www.w3.org/1999/xlink"
-             viewBox="0 0 512 512" xml:space="preserve">
+             viewBox="0 0 512 512">
             <g>
                 <g>
                     <path d="M385.723,84.402H126.277C56.647,84.402,0,141.05,0,210.679v216.919h259.446H512V210.679
