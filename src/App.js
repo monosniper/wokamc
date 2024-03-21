@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles/App.scss';
 import {
-    createHashRouter,
+    createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
 import Home from "./pages/home";
@@ -11,7 +11,7 @@ import Rules from "./pages/rules";
 import {RootStoreContext} from "./root-store-context";
 import RootStore from "./store/root";
 
-const router = createHashRouter([
+const router = createBrowserRouter([
     {
         path: "/",
         element: <Home/>,
