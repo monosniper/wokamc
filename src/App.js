@@ -1,15 +1,17 @@
 import React from 'react';
 import './styles/App.scss';
 import {
-    createBrowserRouter,
+    createHashRouter,
     RouterProvider,
 } from "react-router-dom";
 import Home from "./pages/home";
 import Punishments from "./pages/punishments";
 import Policy from "./pages/policy";
 import Rules from "./pages/rules";
+import {RootStoreContext} from "./root-store-context";
+import RootStore from "./store/root";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Home/>,
@@ -29,7 +31,9 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return <RootStoreContext.Provider value={new RootStore()}>
+      <RouterProvider router={router} />
+  </RootStoreContext.Provider>;
 };
 
 export default App;

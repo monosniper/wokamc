@@ -1,10 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import Slider from 'react-input-slider'
-import {Context} from "../index";
+import {useStores} from "../root-store-context";
 
 const CoinSlider = () => {
-    const {store} = useContext(Context);
+    const { basket: { items, add, remove } } = useStores()
     const [amount, setAmount] = useState(100)
     const [count, setCount] = useState(125)
 
@@ -16,13 +16,6 @@ const CoinSlider = () => {
         } else if(amount <= 5000) {
             setCount((amount * 1.35).toFixed(0))
         }
-        // if(amount <= 1500) {
-        //     setCount(amount)
-        // } else if(amount <= 2499) {
-        //     setCount((amount * 1.1).toFixed(0))
-        // } else if(amount <= 5000) {
-        //     setCount((amount * 1.2).toFixed(0))
-        // }
     }, [amount]);
 
     return <section className="coin-slider">
@@ -39,7 +32,7 @@ const CoinSlider = () => {
                         xmax={5000}
                         xmin={10}
                         xstep={5}
-                        disabled={store.basket.find(({id}) => id === 'money')}
+                        disabled={items.find(({id}) => id === 'money')}
                         onChange={({ x }) => setAmount(x)}
                         styles={{
                             track: {
@@ -72,16 +65,16 @@ const CoinSlider = () => {
                         <div className="result-box__item result-box__right">{count}€</div>
                     </div>
                 </div>
-                {store.basket.find(({id}) => id === 'money') ? (
+                {items.find(({id}) => id === 'money') ? (
                         <div className="product__action">
                             <button className="btn-buy btn-buy_detail" type="button">
-                                {store.basket.find(({id}) => id === 'money').count} €
+                                {items.find(({id}) => id === 'money').count} €
                             </button>
-                            <button onClick={() => store.removeFromBasket('money')} className="btn-del _icon-del"
+                            <button onClick={() => remove('money')} className="btn-del _icon-del"
                                     type="button"></button>
                         </div>
                     ) :
-                    <button onClick={() => store.addToBasket('money', null, count, amount)} className="coin-slider__btn">В Корзину</button>
+                    <button onClick={() => add('money', null, count, amount)} className="coin-slider__btn">В Корзину</button>
                 }
             </div>
         </div>

@@ -1,13 +1,15 @@
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import {Discord} from "react-discord-widget";
-import {Context} from "../index";
 import {observer} from "mobx-react-lite";
+import {useStores} from "../root-store-context";
 
-// const IP = "play.hightcore.org"
 const IP = "mc.woka.fun"
 
-const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_styles}) => {
-     const {store} = useContext(Context);
+const Hero = ({scroll_id, text, title_2, btn_text, video, container_styles}) => {
+    const {
+        main: { totalOnline }
+    } = useStores();
+
     const [copied, setCopied] = useState(false)
 
     const handleClick = () => {
@@ -44,10 +46,10 @@ const Hero = ({scroll_id, text, title, title_2, btn_text, video, container_style
                             <div className="online__title">Онлайн на сервере</div>
                             <div className="online__info">
                                 <div className="online__icon">
-                                    <img src="img/online-indicator-success.svg" alt="Image"/>
+                                    <img src="img/online-indicator-success.svg" alt="Online"/>
                                 </div>
                                 <div className="online__num">
-                                    {store.getTotalOnline()} из 240
+                                    {totalOnline} из 240
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Hero from "../components/Hero";
 import Products from "../components/Products";
 import Servers from "../components/Servers";
@@ -6,8 +6,23 @@ import Socials from "../components/Socials";
 import LastBuys from "../components/LastBuys";
 import Layout from "../layouts/main";
 import CoinSlider from "../components/CoinSlider";
+import {useStores} from "../root-store-context";
 
 const Home = () => {
+	const { main: {
+		fetchTags,
+		fetchProducts,
+		fetchLastBuys,
+		fetchOnline,
+	} } = useStores()
+
+	useEffect(() => {
+		fetchTags()
+		fetchProducts()
+		fetchLastBuys()
+		fetchOnline()
+	}, []);
+
     return (
 		<Layout>
 			<Hero

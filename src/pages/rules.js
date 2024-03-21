@@ -1,6 +1,5 @@
-import React, {useContext, useEffect} from 'react';
+import React from 'react';
 import Layout from "../layouts/main";
-import {Context} from "../index";
 
 const Rules = () => {
     return (
@@ -235,7 +234,7 @@ const Rules = () => {
 
                 <p>
                     Если у вас появились вопросы или просьбы относительно правил или сервера в целом, просим обратиться к нам в поддержку: <a
-                    href="https://discord.gg/4Ph6MTtyNy" target={"_blank"}>https://discord.gg/4Ph6MTtyNy</a>
+                    href="https://discord.gg/4Ph6MTtyNy" target={"_blank"} rel="noreferrer">https://discord.gg/4Ph6MTtyNy</a>
                 </p>
             </div>
         </Layout>

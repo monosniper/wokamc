@@ -1,21 +1,24 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Modal from "react-modal";
-import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
+import {useStores} from "../../root-store-context";
 
 const ProductChoice = ({product}) => {
-    const {store} = useContext(Context);
+    const {
+        basket: { items, add, remove },
+        modal: { state: modals, hide }
+    } = useStores();
 
     return (
         <Modal
             ariaHideApp={false}
             closeTimeoutMS={500}
             className={'modal popup_small'}
-            isOpen={store.modals.productChoice[product.id]}
+            isOpen={modals.productChoice[product.id]}
             shouldCloseOnOverlayClick={true}
         >
             <div className="popup__content">
-                <button onClick={() => store.hideModal('productChoice', product.id)} type="button" className="popup__close _icon-close"></button>
+                <button onClick={() => hide('productChoice', product.id)} type="button" className="popup__close _icon-close"></button>
                 <div className="choose">
                     <div className="choose__title"><span>{product.title}</span>Сделайте выбор</div>
                     <div className="choose__items">
@@ -26,16 +29,16 @@ const ProductChoice = ({product}) => {
                                 <span>Стоимость</span>
                                 <span>{product.price_1}.00 ₽</span>
                             </div>
-                            {store.basket.find(({id, expiry}) => id === product.id && expiry === '1') ? (
+                            {items.find(({id, expiry}) => id === product.id && expiry === '1') ? (
                                 <div className="product__action">
                                     <button className="btn-buy btn-buy_detail" type="button">
-                                        {store.basket.find(({id}) => id === product.id).count} шт.
+                                        {items.find(({id}) => id === product.id).count} шт.
                                     </button>
-                                    <button onClick={() => store.removeFromBasket(product.id)} className="btn-del _icon-del"
+                                    <button onClick={() => remove(product.id)} className="btn-del _icon-del"
                                             type="button"></button>
                                 </div>
                             ) : (
-                                <button className="choose-item__btn" onClick={() => store.addToBasket(product.id, '1')}>В корзину</button>
+                                <button className="choose-item__btn" onClick={() => add(product.id, '1')}>В корзину</button>
                             )}
                         </div>
                         <div className="choose-item">
@@ -45,16 +48,16 @@ const ProductChoice = ({product}) => {
                                 <span>Стоимость</span>
                                 <span>{product.price_3}.00 ₽</span>
                             </div>
-                            {store.basket.find(({id, expiry}) => id === product.id && expiry === '3') ? (
+                            {items.find(({id, expiry}) => id === product.id && expiry === '3') ? (
                                 <div className="product__action">
                                     <button className="btn-buy btn-buy_detail" type="button">
-                                        {store.basket.find(({id}) => id === product.id).count} шт.
+                                        {items.find(({id}) => id === product.id).count} шт.
                                     </button>
-                                    <button onClick={() => store.removeFromBasket(product.id)} className="btn-del _icon-del"
+                                    <button onClick={() => remove(product.id)} className="btn-del _icon-del"
                                             type="button"></button>
                                 </div>
                             ) : (
-                                <button className="choose-item__btn" onClick={() => store.addToBasket(product.id, '3')}>В корзину</button>
+                                <button className="choose-item__btn" onClick={() => add(product.id, '3')}>В корзину</button>
                             )}
                         </div>
                         <div className="choose-item">
@@ -64,16 +67,16 @@ const ProductChoice = ({product}) => {
                                 <span>Стоимость</span>
                                 <span>{product.price}.00 ₽</span>
                             </div>
-                            {store.basket.find(({id, expiry}) => id === product.id && expiry === 'forever') ? (
+                            {items.find(({id, expiry}) => id === product.id && expiry === 'forever') ? (
                                 <div className="product__action">
                                     <button className="btn-buy btn-buy_detail" type="button">
-                                        {store.basket.find(({id}) => id === product.id).count} шт.
+                                        {items.find(({id}) => id === product.id).count} шт.
                                     </button>
-                                    <button onClick={() => store.removeFromBasket(product.id)} className="btn-del _icon-del"
+                                    <button onClick={() => remove(product.id)} className="btn-del _icon-del"
                                             type="button"></button>
                                 </div>
                             ) : (
-                                <button className="choose-item__btn" onClick={() => store.addToBasket(product.id, 'forever')}>В корзину</button>
+                                <button className="choose-item__btn" onClick={() => add(product.id, 'forever')}>В корзину</button>
                             )}
                         </div>
                     </div>

@@ -1,13 +1,15 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import Layout from "../layouts/main";
-import {Context} from "../index";
 import {Link} from "react-router-dom";
+import {useStores} from "../root-store-context";
 
 const Policy = () => {
-    const {store} = useContext(Context);
+    const {
+        modal: { hide }
+    } = useStores();
 
     useEffect(() => {
-        store.hideModal('basket')
+        hide('basket')
     }, []);
 
     return (
@@ -48,9 +50,9 @@ const Policy = () => {
                     обслуживание Портала, а также предоставление доступа Пользователям к Порталу
                     осуществляется исключительно Оператором. Участие Пользователей в Играх происходит
                     в интерактивном (онлайн) режиме, посредством IP Игры (mc.woka.fun,
-                    ua.woka.fun) и/или получения информации с сайтов (<a href="https://woka.fun" target={"_blank"}>https://woka.fun</a>) и/или его
+                    ua.woka.fun) и/или получения информации с сайтов (<a href="https://woka.fun" target={"_blank"} rel="noreferrer">https://woka.fun</a>) и/или его
                     поддоменов и/или официального сообщества Игры в социальной сети Discord
-                    (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"}>https://discord.gg/4Ph6MTtyNy</a>) и подключения Пользователя через всемирную сеть
+                    (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"} rel="noreferrer">https://discord.gg/4Ph6MTtyNy</a>) и подключения Пользователя через всемирную сеть
                     Интернет к Ресурсам Оператора. Исключительными правами на использование Портала
                     обладает Оператор.
                 </p>
@@ -65,9 +67,9 @@ const Policy = () => {
                 </p>
 
                 <p>
-                    3) Интернет сайт — интернет сайт, расположенный по адресам (<a href="https://woka.fun" target={"_blank"}>https://woka.fun</a>) и
+                    3) Интернет сайт — интернет сайт, расположенный по адресам (<a href="https://woka.fun" target={"_blank"} rel="noreferrer">https://woka.fun</a>) и
                     его поддоменах, и/или официального сообщества Игры в социальной сети Discord
-                    (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"}>https://discord.gg/4Ph6MTtyNy</a>) предоставляющий Пользователю доступ к ресурсам
+                    (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"} rel="noreferrer">https://discord.gg/4Ph6MTtyNy</a>) предоставляющий Пользователю доступ к ресурсам
                     Оператора. Оператор размещает информацию, обязательную для Пользователей, на
                     Интернет сайте.
                 </p>
@@ -213,7 +215,7 @@ const Policy = () => {
                 </p>
 
                 <p>
-                    2.5. Уведомлять Пользователя путем опубликования информации на Интернет-сайте об изменениях условий настоящего Соглашения. (информация о важных изменениях публикуется на форуме проекта, расположенного по адресу: (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"}>https://discord.gg/4Ph6MTtyNy</a>)
+                    2.5. Уведомлять Пользователя путем опубликования информации на Интернет-сайте об изменениях условий настоящего Соглашения. (информация о важных изменениях публикуется на форуме проекта, расположенного по адресу: (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"} rel="noreferrer">https://discord.gg/4Ph6MTtyNy</a>)
                 </p>
 
                 <p>
@@ -244,7 +246,7 @@ const Policy = () => {
 
                 <p>
                     2.11.Пользователь имеет право связаться с Оператором по возникшему вопросу по
-                    следующей ссылке: (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"}>https://discord.gg/4Ph6MTtyNy</a>) , а так же посредством электронной
+                    следующей ссылке: (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"} rel="noreferrer">https://discord.gg/4Ph6MTtyNy</a>) , а так же посредством электронной
                     почты по адресу wokamc@bk.ru. Оператор вступает в переписку с Пользователем по
                     своему усмотрению.
                 </p>
@@ -427,7 +429,7 @@ const Policy = () => {
 
                 <p>
                     2.37. Пользователь может обжаловать действия Модераторов Игры в специальном
-                    разделе форума проекта (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"}>https://discord.gg/4Ph6MTtyNy</a>). Жалоба должна быть изложена
+                    разделе форума проекта (<a href="https://discord.gg/4Ph6MTtyNy" target={"_blank"} rel="noreferrer">https://discord.gg/4Ph6MTtyNy</a>). Жалоба должна быть изложена
                     аргументированно, без эмоций и нарушения остальных пунктов правил. Жалобы на
                     транслите не рассматриваются. Жалобы на действия модераторов старше одного месяца
                     не рассматриваются. Жалоба подается не более одного раза. Если она рассмотрена, и по
@@ -794,7 +796,7 @@ const Policy = () => {
 
                 <p>
                     5. Перечень и стоимость Дополнительных Платных Услуг публикуется исключительно
-                    Оператором на Интернет-ресурсах (<a href="https://woka.fun" target={"_blank"}>https://woka.fun</a>).
+                    Оператором на Интернет-ресурсах (<a href="https://woka.fun" target={"_blank"} rel="noreferrer">https://woka.fun</a>).
                 </p>
 
                 <p>
@@ -802,7 +804,7 @@ const Policy = () => {
                     Оператором на Интернет сайте. Пополнение счета Пользователя осуществляется
                     Пользователем путем перечисления денежных средств через поддерживаемые
                     платежные системы на расчетный счет Оператора. Список доступных для оплаты
-                    платежных систем приведен на Интернет-ресурсах (<a href="https://woka.fun" target={"_blank"}>https://woka.fun</a>).
+                    платежных систем приведен на Интернет-ресурсах (<a href="https://woka.fun" target={"_blank"} rel="noreferrer">https://woka.fun</a>).
                 </p>
 
                 <p>

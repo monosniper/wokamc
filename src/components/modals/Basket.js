@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Modal from "react-modal";
 import BasketItem from "../BasketItem";
-import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import {Link} from "react-router-dom";
+import {useStores} from "../../root-store-context";
 
 const black_list = [
     'all',
@@ -12,7 +12,11 @@ const black_list = [
 ]
 
 const Basket = () => {
-    const {store} = useContext(Context);
+    const {
+        main: { pay },
+        modal: { state: { basket }, hide },
+        basket: { checkPromo, promo: _promo, items, total }
+    } = useStores();
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -52,7 +56,7 @@ const Basket = () => {
     }, [promo]);
 
     useEffect(() => {
-        debouncedPromo.trim() !== "" && store.checkPromo(debouncedPromo)
+        debouncedPromo.trim() !== "" && checkPromo(debouncedPromo)
     }, [debouncedPromo]);
 
     const handlePay = () => {
@@ -60,9 +64,9 @@ const Basket = () => {
             name.trim() !== '' && email.trim() !== ''
         ) {
             if(checked) {
-                if(store.basket.length)
+                if(items.length)
                     if(!black_list.includes(name.trim())) {
-                        store.pay({
+                        pay({
                             name: name.trim(), email: email.trim()
                         })
                     } else showError('Недопустимый никнейм!')
@@ -76,9 +80,9 @@ const Basket = () => {
             ariaHideApp={false}
             closeTimeoutMS={500}
             className={'modal'}
-            isOpen={store.modals.basket}
+            isOpen={basket}
             shouldCloseOnOverlayClick={true}
-            onRequestClose={() => store.hideModal('basket')}
+            onRequestClose={() => hide('basket')}
             overlayRef={() => document.querySelector('.overlay')}
         >
             <div className="popup__content">
@@ -86,18 +90,18 @@ const Basket = () => {
                     <div className="text">{errorText}</div></div>
                     : null
                 }
-                <button onClick={() => store.hideModal('basket')} type="button" className="popup__close _icon-close"></button>
+                <button onClick={() => hide('basket')} type="button" className="popup__close _icon-close"></button>
                 <div className="popup__text">
                     <div className="popup__title">Корзина</div>
                     <div className="order">
                         <div className="order__item info-order">
                             <div className="info-order__header">
                                 <div className="empty-cart _hidden">
-                                    <img src="img/icons/empty.svg" alt="Image"/>
+                                    <img src="img/icons/empty.svg" alt="Empty"/>
                                     <p>Корзина пуста</p>
                                 </div>
                                 <div className="cart-products">
-                                    {store.basket.map((item, i) => <BasketItem key={'item-' + i} item={item}/>)}
+                                    {items.map((item, i) => <BasketItem key={'item-' + i} item={item}/>)}
                                 </div>
                             </div>
                             <div className="info-order__text">
@@ -140,7 +144,7 @@ const Basket = () => {
                                         <input value={promo} onChange={(e) => setPromo(e.target.value)} className="form__input input" autoComplete="off" type="text"
                                                placeholder="XXXXX"/>
                                     </div>
-                                    {store.promo ? <div className="promo-text">{store.promo.name} -{store.promo.amount}%</div> : null}
+                                    {_promo ? <div className="promo-text">{_promo.name} -{_promo.amount}%</div> : null}
                                     <div className="form__column">
                                         <div className="checkbox">
                                             <input id="c_" data-error="Ошибка" className="checkbox__input"
@@ -159,7 +163,7 @@ const Basket = () => {
                                     <div className="form__title">Оформление платежа</div>
                                     <div className="form__total">
                                         <span>Стоимость товаров:</span>
-                                        <strong>{store.getTotalBasket()}.00 ₽</strong>
+                                        <strong>{total}.00 ₽</strong>
                                     </div>
                                     <button disabled={disable} onClick={handlePay} className="form__button" type="button">
                                         Оплатить

@@ -1,11 +1,14 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Basket from "./modals/Basket";
 import {Link} from "react-router-dom";
-import {Context} from "../index";
 import {observer} from "mobx-react-lite";
+import {useStores} from "../root-store-context";
 
 const Header = () => {
-    const {store} = useContext(Context);
+    const {
+        basket: { total },
+        modal: { show }
+    } = useStores();
 
     const toggleMobileMenu = () => {
         document.querySelector('html').classList.toggle('lock')
@@ -33,9 +36,9 @@ const Header = () => {
                     </nav>
                 </div>
                 <div className="header__action">
-                    <div className="header__cart cart" onClick={() => store.showModal('basket')}>
+                    <div className="header__cart cart" onClick={() => show('basket')}>
                         <button className="cart__btn" data-popup="#order" type="button">
-                            <span className="_icon-cart">{store.getTotalBasket()}.00 ₽</span>
+                            <span className="_icon-cart">{total}.00 ₽</span>
                             <i className="_icon-arrow"></i>
                         </button>
                     </div>

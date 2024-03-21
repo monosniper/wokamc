@@ -1,32 +1,31 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import * as d3 from "d3";
-import {Context} from "../index";
 import {observer} from "mobx-react-lite";
+import {useStores} from "../root-store-context";
 
 const IP = "mc.woka.fun"
-// const IP = "play.hightcore.org"
 
-const Tooltip = ({data, position}) => {
-    return (
-        <div
-            className="graph-tooltip"
-            style={{
-                left: position.x - 20 + "px",
-                top: position.y - 35 + "px",
-            }}
-        >
-            {data}
-        </div>
-    );
-};
+// const Tooltip = ({data, position}) => {
+//     return (
+//         <div
+//             className="graph-tooltip"
+//             style={{
+//                 left: position.x - 20 + "px",
+//                 top: position.y - 35 + "px",
+//             }}
+//         >
+//             {data}
+//         </div>
+//     );
+// };
 
 
 const Servers = () => {
+    const { main: { online: data } } = useStores()
+
     const [copied, setCopied] = useState(false)
-    const [data, setData] = useState([])
     const svgRef = useRef(null)
     // const svgRef2 = useRef(null)
-    const {store} = useContext(Context);
 
     const handleCopy = () => {
         navigator.clipboard.writeText(IP)
@@ -35,10 +34,7 @@ const Servers = () => {
     }
 
     useEffect(() => {
-        setData(store.online)
-    }, [store.online]);
 
-    useEffect(() => {
         if (!data.length) return;
 
         const draw = () => {

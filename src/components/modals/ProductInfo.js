@@ -1,22 +1,25 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {API_URL} from "../../api";
 import Modal from "react-modal";
 import {observer} from "mobx-react-lite";
-import {Context} from "../../index";
+import {useStores} from "../../root-store-context";
 
 const ProductInfo = ({product, tags}) => {
-    const {store} = useContext(Context);
+    const {
+        basket: { items, add, remove },
+        modal: { show, hide, state: modals }
+    } = useStores();
 
     return (
         <Modal
             ariaHideApp={false}
             closeTimeoutMS={500}
             className={'modal popup_small'}
-            isOpen={store.modals.productInfo[product.id]}
+            isOpen={modals.productInfo[product.id]}
             shouldCloseOnOverlayClick={true}
         >
             <div className="popup__content">
-                <button onClick={() => store.hideModal('productInfo', product.id)} type="button" className="popup__close _icon-close"></button>
+                <button onClick={() => hide('productInfo', product.id)} type="button" className="popup__close _icon-close"></button>
                 <div className="popup__text">
                     <div className="info-buy">
                         <div className="info-buy__header">
@@ -40,12 +43,12 @@ const ProductInfo = ({product, tags}) => {
                                 </div>
                                 <div className="info-buy__price">
                                     <span>{product.Tag.isPrivilege ? product.price_1 : product.price}.00 ₽</span>
-                                    {store.basket.find(({id}) => id === product.id) ? (
+                                    {items.find(({id}) => id === product.id) ? (
                                         <div className="product__action">
                                             <button className="btn-buy btn-buy_detail" type="button">
-                                                {store.basket.find(({id}) => id === product.id).count} шт.
+                                                {items.find(({id}) => id === product.id).count} шт.
                                             </button>
-                                            <button onClick={() => store.removeFromBasket(product.id)} className="btn-del _icon-del"
+                                            <button onClick={() => remove(product.id)} className="btn-del _icon-del"
                                                     type="button"></button>
                                         </div>
                                     ) :
@@ -54,8 +57,8 @@ const ProductInfo = ({product, tags}) => {
                                             type="button"
                                             onClick={
                                             product.Tag.isPrivilege ?
-                                                () => {store.hideModal('productInfo', product.id);store.showModal('productChoice', product.id)} :
-                                                () => {store.addToBasket(product.id);store.hideModal('productInfo', product.id)}
+                                                () => {hide('productInfo', product.id);show('productChoice', product.id)} :
+                                                () => {add(product.id);hide('productInfo', product.id)}
                                             }
                                         >В корзину</button>
                                     }

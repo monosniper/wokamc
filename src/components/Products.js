@@ -1,11 +1,21 @@
-import React, {useContext, useState} from 'react';
-import {Context} from "../index";
+import React from 'react';
 import {observer} from "mobx-react-lite";
 import Product from "./Product";
 import {motion, AnimatePresence} from "framer-motion";
+import {useStores} from "../root-store-context";
 
 const Products = () => {
-    const {store} = useContext(Context);
+    const {
+        main: {
+            activeTag,
+            tags,
+            query,
+            filteredProducts,
+            setActiveMode,
+            setActiveTag,
+            setQuery,
+        },
+    } = useStores();
 
     const tagIcons = {
         'Привилегии': <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="mr-3"
@@ -24,7 +34,7 @@ const Products = () => {
         </svg>,
         'Другое': <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M17.5709 12.1855L12.1925 17.563C12.0532 17.7024 11.8878 17.8131 11.7057 17.8885C11.5236 17.964 11.3284 18.0029 11.1313 18.0029C10.9342 18.0029 10.739 17.964 10.5569 17.8885C10.3748 17.8131 10.2094 17.7024 10.07 17.563L3.33337 10.8334V3.33337H10.8334L17.5709 10.0709C17.8501 10.3519 18.0069 10.732 18.0069 11.1282C18.0069 11.5243 17.8501 11.9044 17.5709 12.1855V12.1855Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.70837 8.75002C7.98464 8.75002 8.24959 8.64027 8.44494 8.44492C8.64029 8.24957 8.75004 7.98462 8.75004 7.70835C8.75004 7.43209 8.64029 7.16713 8.44494 6.97178C8.24959 6.77643 7.98464 6.66669 7.70837 6.66669C7.4321 6.66669 7.16715 6.77643 6.9718 6.97178C6.77645 7.16713 6.6667 7.43209 6.6667 7.70835C6.6667 7.98462 6.77645 8.24957 6.9718 8.44492C7.16715 8.64027 7.4321 8.75002 7.70837 8.75002Z" fill="white"/>
+            <path fillRule="evenodd" clipRule="evenodd" d="M7.70837 8.75002C7.98464 8.75002 8.24959 8.64027 8.44494 8.44492C8.64029 8.24957 8.75004 7.98462 8.75004 7.70835C8.75004 7.43209 8.64029 7.16713 8.44494 6.97178C8.24959 6.77643 7.98464 6.66669 7.70837 6.66669C7.4321 6.66669 7.16715 6.77643 6.9718 6.97178C6.77645 7.16713 6.6667 7.43209 6.6667 7.70835C6.6667 7.98462 6.77645 8.24957 6.9718 8.44492C7.16715 8.64027 7.4321 8.75002 7.70837 8.75002Z" fill="white"/>
         </svg>
         ,
     }
@@ -54,7 +64,7 @@ const Products = () => {
                                                 <path d="M8.72495 14.25H7.87495C7.76223 14.25 7.65413 14.2948 7.57443 14.3745C7.49473 14.4542 7.44995 14.5623 7.44995 14.675V15.525C7.44995 15.6377 7.49473 15.7458 7.57443 15.8255C7.65413 15.9052 7.76223 15.95 7.87495 15.95H8.72495C8.83767 15.95 8.94577 15.9052 9.02547 15.8255C9.10517 15.7458 9.14995 15.6377 9.14995 15.525V14.675C9.14995 14.5623 9.10517 14.4542 9.02547 14.3745C8.94577 14.2948 8.83767 14.25 8.72495 14.25Z" fill="white"></path>
                                             </svg>
                                         </span>
-                                    <select onChange={e => store.setActiveMode(e.target.value)} className={'select'}>
+                                    <select onChange={e => setActiveMode(e.target.value)} className={'select'}>
                                         {modes.map(mode => <option key={'mode-'+mode} value={mode}>{mode}</option>)}
                                     </select>
                                 </button>
@@ -70,7 +80,7 @@ const Products = () => {
                                             <path d="M6 12L1 17" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
                                         </svg>
 									</span>
-                                    <input value={store.query} onChange={(e) => store.setQuery(e.target.value)} className="input" autoComplete="off" type="text"
+                                    <input value={query} onChange={(e) => setQuery(e.target.value)} className="input" autoComplete="off" type="text"
                                            data-error="Ошибка"
                                            placeholder="Введите текст..."/>
                                 </button>
@@ -80,17 +90,17 @@ const Products = () => {
                 </div>
                 <div className="tabs" data-tabs="">
                     <nav className="tabs__navigation">
-                        <button onClick={() => store.setActiveTag(undefined)} type="button"
-                                className={"tabs__title" + (store.activeTag === undefined ? ' _tab-active' : '')}>
+                        <button onClick={() => setActiveTag(undefined)} type="button"
+                                className={"tabs__title" + (activeTag === undefined ? ' _tab-active' : '')}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="mr-3"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path d="M9.9996 2.08331L7.45252 7.28248L1.66669 8.12081L5.85794 12.2183L4.85585 17.9166L10 15.175L15.1438 17.9166L14.15 12.2187L18.3334 8.12123L12.5796 7.28248L10 2.08331H9.9996Z"></path>
                             </svg>
                             <span>Все товары</span>
                         </button>
-                        {store.tags.filter(({isHidden}) => !isHidden).map(tag => (
-                            <button key={"tag-"+tag.id} onClick={() => store.setActiveTag(tag.id)} type="button"
-                                    className={"tabs__title" + (store.activeTag === tag.id ? ' _tab-active' : '')}>
+                        {tags.filter(({isHidden}) => !isHidden).map(tag => (
+                            <button key={"tag-"+tag.id} onClick={() => setActiveTag(tag.id)} type="button"
+                                    className={"tabs__title" + (activeTag === tag.id ? ' _tab-active' : '')}>
                                 {tagIcons[tag.name]}
                                 <span>{tag.name}</span>
                             </button>
@@ -103,7 +113,7 @@ const Products = () => {
                                 className="products__items"
                             >
                                 <AnimatePresence>
-                                    {store.filteredProduct().map(product => (
+                                    {filteredProducts.map(product => (
                                         <Product key={'product-' + product.id} product={product}/>
                                     ))}
                                 </AnimatePresence>
