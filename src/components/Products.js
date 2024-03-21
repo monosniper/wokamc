@@ -27,6 +27,11 @@ const Products = () => {
             <path d="M9.58334 10L16.6667 2.91669" stroke="white" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round"/>
             <path d="M12.6271 7.04169L14.8892 9.29169L17.5279 6.66669L15.2663 4.41669L12.6271 7.04169V7.04169Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
         </svg>,
+        'Тайники': <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.52835 10.1242C10.0483 10.6334 10.4238 11.2716 10.6163 11.9735C10.8089 12.6754 10.8116 13.4159 10.6242 14.1192C10.4351 14.8234 10.0632 15.4652 9.54616 15.9794C9.02911 16.4936 8.38531 16.8619 7.68001 17.0471C6.9739 17.2339 6.23106 17.2315 5.52615 17.0402C4.82123 16.849 4.17907 16.4756 3.66418 15.9575C2.90909 15.1814 2.49081 14.1387 2.50025 13.0559C2.50969 11.9731 2.94609 10.9378 3.7146 10.175C5.31418 8.58418 7.90043 8.56168 9.52751 10.125L9.52835 10.1242V10.1242Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
+            <path d="M9.58334 10L16.6667 2.91669" stroke="white" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round"/>
+            <path d="M12.6271 7.04169L14.8892 9.29169L17.5279 6.66669L15.2663 4.41669L12.6271 7.04169V7.04169Z" stroke="white" strokeWidth="2" strokeLinejoin="round"/>
+        </svg>,
         'Валюта': <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10 18.3334C14.6024 18.3334 18.3334 14.6024 18.3334 10C18.3334 5.39765 14.6024 1.66669 10 1.66669C5.39765 1.66669 1.66669 5.39765 1.66669 10C1.66669 14.6024 5.39765 18.3334 10 18.3334Z" stroke="white" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round"/>
             <path d="M8.33335 6.66667V10H11.25C11.692 10 12.116 9.8244 12.4285 9.51184C12.7411 9.19928 12.9167 8.77536 12.9167 8.33333C12.9167 7.89131 12.7411 7.46738 12.4285 7.15482C12.116 6.84226 11.692 6.66667 11.25 6.66667H10.4167M8.33335 6.66667H10.4167M8.33335 6.66667H6.66669M10.4167 6.66667V5" stroke="white" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round"/>

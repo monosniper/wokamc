@@ -30,7 +30,7 @@ const Hero = ({scroll_id, text, title_2, btn_text, video, container_styles}) => 
                     <div className="hero__text">{text}</div>
                     <div className="hero__block">
                         <div className="hero__btn-wrapper">
-                            <a href={`#${scroll_id}`} className="hero__btn _icon-arrow-down-circle" type="button">{btn_text}</a>
+                            <a href={`/#/#${scroll_id}`} className="hero__btn _icon-arrow-down-circle" type="button">{btn_text}</a>
                         </div>
 
                         <div className="ip" onClick={handleClick}>
