@@ -8,6 +8,7 @@ const Products = () => {
     const {
         main: {
             activeTag,
+            activeMode,
             tags,
             query,
             filteredProducts,
@@ -124,7 +125,7 @@ const Products = () => {
                                                     fill="white"></path>
                                             </svg>
                                         </span>
-                                    <select onChange={e => setActiveMode(e.target.value)} className={'select'}>
+                                    <select onChange={e => setActiveMode(e.target.value)} defaultValue={activeMode} className={'select'}>
                                         {modes.map(mode => <option key={'mode-' + mode} value={mode}>{mode}</option>)}
                                     </select>
                                 </button>
