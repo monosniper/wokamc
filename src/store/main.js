@@ -15,7 +15,7 @@ class Store {
     products = []
     last_buys = []
     activeTag = undefined
-    activeMode = 'ANARCHY-M'
+    activeMode = 'GRIEF-M'
     query = ""
     // online = {'ANARCHY-M': [], 'GRIEF-M': []}
     online = []

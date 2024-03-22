@@ -21,7 +21,7 @@ const LastBuys = () => {
     useEffect(() => {
         fetchLastBuys()
     }, []);
-    console.log(last_buys.filter(({isCompleted}) => isCompleted))
+
     return (
         <section className="last-buy">
             <div className="last-buy__container">

@@ -17,7 +17,7 @@ const Punishments = () => {
     ]
 
     const [activeType, setActiveType] = useState('bans')
-    const [activeMode, setActiveMode] = useState('ANARCHY-M')
+    const [activeMode, setActiveMode] = useState('GRIEF-M')
     const [query, setQuery] = useState('')
     const [data, setData] = useState({})
     const [items, setItems] = useState([])
