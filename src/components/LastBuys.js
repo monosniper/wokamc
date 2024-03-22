@@ -21,7 +21,7 @@ const LastBuys = () => {
     useEffect(() => {
         fetchLastBuys()
     }, []);
-
+    console.log(last_buys.filter(({isCompleted}) => isCompleted))
     return (
         <section className="last-buy">
             <div className="last-buy__container">
@@ -42,7 +42,7 @@ const LastBuys = () => {
                                 <img src={API_URL + product.image} alt={product.title}/>
                             </div>
                             <div className="buy-item__title">
-                                <span>{product.title}</span>
+                                <span>{product.title === 'money' ? (buy.products?.find(({id}) => id === product.title).count + " € (Дон. Валюта)") : product.title}</span>
                                 <small className="_icon-user">
                                     {buy.name}
                                 </small>
