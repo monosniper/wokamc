@@ -84,7 +84,7 @@ const Punishments = () => {
                                                 <path d="M8.72495 14.25H7.87495C7.76223 14.25 7.65413 14.2948 7.57443 14.3745C7.49473 14.4542 7.44995 14.5623 7.44995 14.675V15.525C7.44995 15.6377 7.49473 15.7458 7.57443 15.8255C7.65413 15.9052 7.76223 15.95 7.87495 15.95H8.72495C8.83767 15.95 8.94577 15.9052 9.02547 15.8255C9.10517 15.7458 9.14995 15.6377 9.14995 15.525V14.675C9.14995 14.5623 9.10517 14.4542 9.02547 14.3745C8.94577 14.2948 8.83767 14.25 8.72495 14.25Z" fill="white"></path>
                                             </svg>
                                         </span>
-                                        <select onChange={e => setActiveMode(e.target.value)} className={'select'}>
+                                        <select onChange={e => setActiveMode(e.target.value)} defaultValue={activeMode} className={'select'}>
                                             {modes.map(mode => <option key={'mode-'+mode} value={mode}>{mode}</option>)}
                                         </select>
                                     </button>
