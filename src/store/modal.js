@@ -3,6 +3,7 @@ import {makeAutoObservable} from "mobx";
 class ModalStore {
     state = {
         basket: false,
+        paymentChoose: false,
         productInfo: [],
         productChoice: [],
     }

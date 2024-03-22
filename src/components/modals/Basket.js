@@ -13,9 +13,8 @@ const black_list = [
 
 const Basket = () => {
     const {
-        main: { pay },
-        modal: { state: { basket }, hide },
-        basket: { checkPromo, promo: _promo, items, total }
+        modal: { state: { basket }, state, hide, show },
+        basket: { setPayData, checkPromo, promo: _promo, items, total }
     } = useStores();
 
     const [name, setName] = useState('')
@@ -66,9 +65,12 @@ const Basket = () => {
             if(checked) {
                 if(items.length)
                     if(!black_list.includes(name.trim())) {
-                        pay({
+                        setPayData({
                             name: name.trim(), email: email.trim()
                         })
+                        hide('basket')
+                        show('paymentChoose')
+                        console.log(state)
                     } else showError('Недопустимый никнейм!')
                 else showError('Ваша корзина пуста!')
             } else showError('Ознакомтесь с правилами и политикой конфиденциальности!')
@@ -166,7 +168,7 @@ const Basket = () => {
                                         <strong>{total}.00 ₽</strong>
                                     </div>
                                     <button disabled={disable} onClick={handlePay} className="form__button" type="button">
-                                        Оплатить
+                                        Далее
                                     </button>
                                 </div>
                             </form>

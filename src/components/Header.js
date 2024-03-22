@@ -3,6 +3,7 @@ import Basket from "./modals/Basket";
 import {Link} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import {useStores} from "../root-store-context";
+import PaymentChoose from "./modals/PaymentChoose";
 
 const Header = () => {
     const {
@@ -46,6 +47,7 @@ const Header = () => {
                 </div>
             </div>
             <Basket />
+            <PaymentChoose />
         </header>
     );
 };

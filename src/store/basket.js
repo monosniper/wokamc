@@ -11,6 +11,7 @@ const prices = {
 class BasketStore {
     items = []
     promo = false
+    payData = null
 
     constructor() {
         makeAutoObservable(this, {}, { autoBind: true })
@@ -43,6 +44,10 @@ class BasketStore {
             if (item.id === id) item.count++
             return item
         })
+    }
+
+    setPayData(data) {
+        this.payData = data
     }
 
     add(id, expiry, count=1, amount) {
