@@ -161,6 +161,7 @@ class Store {
             (this.activeTag !== undefined ? (TagId === this.activeTag) : true) &&
             this.activeMode === mode &&
             !Tag.isHidden &&
+            title !== 'money' &&
             title.toLowerCase().search(this.query.toLowerCase()) !== -1
         )
 
