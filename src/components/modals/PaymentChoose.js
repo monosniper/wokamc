@@ -10,7 +10,7 @@ const PaymentChoose = () => {
         basket: { payData, total }
     } = useStores();
 
-    const [variant, setVariant] = useState('freekassa')
+    const [variant, setVariant] = useState('lava')
 
     const handleClick = () => {
         pay({...payData, variant})
@@ -32,10 +32,10 @@ const PaymentChoose = () => {
                     <div className="popup__title" style={{marginBottom: '1rem'}}>Оплата</div>
                     <p className="popup__text">Выберите предпочитаемый способ оплаты</p>
                     <div className="payments">
-                        <div className={"payment " + (variant === 'freekassa' ? 'active' : '')} onClick={() => setVariant('freekassa')}>
-                            <img src="/img/freekassa.svg" alt="FreeKassa"/>
-                            <div className="payment__text">Минимум 10 ₽</div>
-                        </div>
+                        {/*<div className={"payment " + (variant === 'freekassa' ? 'active' : '')} onClick={() => setVariant('freekassa')}>*/}
+                        {/*    <img src="/img/freekassa.svg" alt="FreeKassa"/>*/}
+                        {/*    <div className="payment__text">Минимум 10 ₽</div>*/}
+                        {/*</div>*/}
                         <div className={"payment " + (variant === 'lava' ? 'active' : '')} onClick={() => setVariant('lava')}>
                             <img src="/img/lava.svg" alt="Lava"/>
                             <div className="payment__text">Минимум 200 ₽</div>
