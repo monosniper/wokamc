@@ -34,7 +34,7 @@ const LastBuys = () => {
                     padding={'1px'}
                 >
                     {last_buys.filter(({isCompleted}) => isCompleted).map(buy => buy.Products.filter(({mode}) => mode === activeMode).map(product => (
-                        <div key={'buy-'+buy.id+'-'+product.id} onClick={() => show("productInfo", product.id)} className="buy-item" data-popup="#info">
+                        <div key={'buy-'+buy.id+'-'+product.id} onClick={product.title === 'money' ? document.querySelector(".coin-slider").scrollIntoView() : () => show("productInfo", product.id)} className="buy-item" data-popup="#info">
                             <div className="buy-item__label">
                                 {moment(buy.created_at).subtract(1, 'm').lang("ru").fromNow()}
                             </div>
