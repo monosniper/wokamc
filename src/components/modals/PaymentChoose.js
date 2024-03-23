@@ -40,6 +40,10 @@ const PaymentChoose = () => {
                             <img src="/img/lava.svg" alt="Lava"/>
                             <div className="payment__text">Минимум 200 ₽</div>
                         </div>
+                        <div className={"payment " + (variant === 'aaio' ? 'active' : '')} onClick={() => setVariant('aaio')}>
+                            <img src="/img/aaio.svg" alt="Aaio"/>
+                            <div className="payment__text">Минимум 15 ₽</div>
+                        </div>
                     </div>
                     <div className="modal__footer">
                         <button onClick={handleClick} className="form__button">
